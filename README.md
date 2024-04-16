@@ -1,0 +1,2 @@
+# notes
+Static site generator
