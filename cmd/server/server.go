@@ -40,12 +40,13 @@ func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
 	content, err := utils.ReadMarkdownFile(markdownFile)
 
 	if os.IsNotExist(err) {
-		fmt.Println(err)
 		http.NotFound(w, r)
 		// TODO: render a 404 template
 		return
 	} else if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(content)
+
+	html := utils.ConvertMarkdownToHTML(content)
+	fmt.Println(html)
 }
