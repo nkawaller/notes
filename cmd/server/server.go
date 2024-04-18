@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-    "log"
+	"log"
 	"net/http"
-    "os"
+	"os"
 	"strings"
 
-    "github.com/nkawaller/notes/internal/utils"
+	"github.com/nkawaller/notes/internal/utils"
 )
 
 type Server struct {
@@ -38,13 +38,14 @@ func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
 	filename := strings.TrimPrefix(path, "/")
 	markdownFile := utils.GetMarkdownFilePath(filename)
 	content, err := utils.ReadMarkdownFile(markdownFile)
-    
-    if os.IsNotExist(err) {
-        http.NotFound(w, r)
-        // TODO: render a 404 template
-        return
-    } else if err != nil {
-        log.Fatal(err)
-    }
-    fmt.Println(content)
+
+	if os.IsNotExist(err) {
+		fmt.Println(err)
+		http.NotFound(w, r)
+		// TODO: render a 404 template
+		return
+	} else if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(content)
 }

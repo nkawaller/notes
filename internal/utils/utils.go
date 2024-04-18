@@ -2,7 +2,7 @@ package utils
 
 import (
 	"fmt"
-    "os"
+	"os"
 	"path/filepath"
 )
 
@@ -14,5 +14,5 @@ func GetMarkdownFilePath(path string) string {
 }
 
 func ReadMarkdownFile(filePath string) ([]byte, error) {
-    return os.ReadFile(filePath)
+	return os.ReadFile(filePath)
 }
