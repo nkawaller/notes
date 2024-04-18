@@ -2,7 +2,12 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"os"
+	"strings"
+
+	"github.com/nkawaller/notes/internal/utils"
 )
 
 type Server struct {
@@ -19,7 +24,7 @@ func NewServer() *Server {
 		http.NewServeMux(),
 	}
 
-	s.router.Handle("/", http.HandlerFunc(s.indexHandler))
+	s.router.Handle("/", http.HandlerFunc(s.handleRequest))
 
 	return s
 }
@@ -28,11 +33,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.router.ServeHTTP(w, r)
 }
 
-func (s *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		w.WriteHeader(http.StatusNotFound)
-		fmt.Fprint(w, "OOPs, we can't seem to find the page you're looking for")
+func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
+	path := r.URL.Path
+	filename := strings.TrimPrefix(path, "/")
+	markdownFile := utils.GetMarkdownFilePath(filename)
+	content, err := utils.ReadMarkdownFile(markdownFile)
+
+	if os.IsNotExist(err) {
+		http.NotFound(w, r)
+		// TODO: render a 404 template
 		return
+	} else if err != nil {
+		log.Fatal(err)
 	}
-	fmt.Fprint(w, "hello note server")
+
+	html := utils.ConvertMarkdownToHTML(content)
+	fmt.Println(html)
 }
