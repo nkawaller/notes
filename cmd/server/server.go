@@ -48,5 +48,5 @@ func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	html := utils.ConvertMarkdownToHTML(content)
-	fmt.Println(html)
+	fmt.Fprint(w, html)
 }
