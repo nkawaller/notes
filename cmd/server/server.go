@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -48,5 +47,5 @@ func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	html := utils.ConvertMarkdownToHTML(content)
-	fmt.Fprint(w, html)
+	utils.RenderPage(w, html, markdownFile)
 }

@@ -11,13 +11,13 @@ func TestGETPost(t *testing.T) {
 
 	server := NewServer()
 
-	// t.Run("landing page returns a note", func(t *testing.T) {
-	// 	request := newNoteRequest("/")
-	// 	response := httptest.NewRecorder()
-	// 	server.ServeHTTP(response, request)
-	// 	assertStatus(t, response.Code, http.StatusOK)
-	// 	assertResponseBody(t, response.Body.String(), "hello note server")
-	// })
+	t.Run("landing page returns a note", func(t *testing.T) {
+		request := newNoteRequest("/")
+		response := httptest.NewRecorder()
+		server.ServeHTTP(response, request)
+		assertStatus(t, response.Code, http.StatusOK)
+		assertResponseBody(t, response.Body.String(), "hello note server")
+	})
 
 	t.Run("index route returns a note", func(t *testing.T) {
 		request := newNoteRequest("/")
