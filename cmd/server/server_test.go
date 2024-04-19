@@ -11,21 +11,31 @@ func TestGETPost(t *testing.T) {
 
 	server := NewServer()
 
-	// t.Run("correct file is returned based on path", func(t *testing.T) {
-	// 	request := newNoteRequest("/note1")
-	// 	response := httptest.NewRecorder()
-	// 	server.ServeHTTP(response, request)
-	// 	assertStatus(t, response.Code, http.StatusOK)
-	// 	assertResponseBody(t, response.Body.String(), "web/content/note1.md")
-	// })
+	t.Run("landing page returns a note", func(t *testing.T) {
+		request := newNoteRequest("/")
+		response := httptest.NewRecorder()
+		server.ServeHTTP(response, request)
+		assertStatus(t, response.Code, http.StatusOK)
+		assertResponseBody(t, response.Body.String(), "hello note server")
+	})
 
-	// t.Run("landing page returns a note", func(t *testing.T) {
-	// 	request := newNoteRequest("/")
-	// 	response := httptest.NewRecorder()
-	// 	server.ServeHTTP(response, request)
-	// 	assertStatus(t, response.Code, http.StatusOK)
-	// 	assertResponseBody(t, response.Body.String(), "hello note server")
-	// })
+	t.Run("index route returns a note", func(t *testing.T) {
+		request := newNoteRequest("/")
+		response := httptest.NewRecorder()
+		server.ServeHTTP(response, request)
+		assertStatus(t, response.Code, http.StatusOK)
+		assertResponseByteLength(t, response.Body.Len(), 389)
+	})
+
+	t.Run("hello route produces ascii values for html-formatted H1 hello", func(t *testing.T) {
+		request := newNoteRequest("/hello")
+		response := httptest.NewRecorder()
+		server.ServeHTTP(response, request)
+		assertStatus(t, response.Code, http.StatusOK)
+		fmt.Println(response.Body.String())
+		want := "[60 104 49 62 72 101 108 108 111 60 47 104 49 62 10]"
+		assertSameBytes(t, response.Body.String(), want)
+	})
 
 	t.Run("unknown route returns a 404", func(t *testing.T) {
 		request := newNoteRequest("/unknown")
@@ -52,5 +62,17 @@ func assertResponseBody(t testing.TB, got, want string) {
 
 	if got != want {
 		t.Errorf("response body does not match; got %q, want %q", got, want)
+	}
+}
+
+func assertResponseByteLength(t testing.TB, got, want int) {
+	if got != want {
+		t.Errorf("Unexpected number of bytes; got %d, want %d", got, want)
+	}
+}
+
+func assertSameBytes(t testing.TB, got, want string) {
+	if got != want {
+		t.Errorf("Unexpected bytes; got %q, want %q", got, want)
 	}
 }
