@@ -37,7 +37,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path
 	filename := strings.TrimPrefix(path, "/")
-	markdownFile := utils.GetMarkdownFilePath(filename)
+	markdownFile := utils.GetMarkdownFilePath(s.fileSystem, filename)
 	content, err := utils.ReadMarkdownFile(s.fileSystem, markdownFile)
 
 	if os.IsNotExist(err) {

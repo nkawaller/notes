@@ -10,25 +10,30 @@ import (
 
 type StubFileSystem struct {
 	fs fstest.MapFS
+	ContentRoot string
 }
 
 func (s StubFileSystem) ReadFile(filename string) ([]byte, error) {
 	return s.fs.ReadFile(filename)
 }
 
+func (s StubFileSystem) ContentRootFn() string {
+	return s.ContentRoot
+}
+
 func TestGETPost(t *testing.T) {
 
+
 	fs := fstest.MapFS{
-		"index.md": {Data: []byte("hello index")},
-		"hello.md": {Data: []byte("hello hello")},
+		"index.md": {Data: []byte("hello INDEX")},
+		"test.md": {Data: []byte("hello TEST")},
 	}
 
-	stubFileSystem := StubFileSystem{fs: fs}
-
+	stubFileSystem := StubFileSystem{fs: fs, ContentRoot: "/web/content/"}
 	server := NewServer(stubFileSystem)
 
 	t.Run("landing page returns a note", func(t *testing.T) {
-		request := newNoteRequest("/")
+		request := newNoteRequest("/test")
 		response := httptest.NewRecorder()
 		server.ServeHTTP(response, request)
 		assertStatus(t, response.Code, http.StatusOK)

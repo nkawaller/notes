@@ -13,15 +13,14 @@ import (
 	"github.com/russross/blackfriday/v2"
 )
 
-func GetMarkdownFilePath(path string) string {
-	if path == "" {
-		return filepath.Join("..", "..", "web", "content", "index.md")
+func GetMarkdownFilePath(fs FileSystem, endpoint string) string {
+	if endpoint == "" {
+		return filepath.Join(fs.ContentRootFn(), "index.md")
 	}
-	return filepath.Join("..", "..", "web", "content", fmt.Sprintf("%s.md", path))
+	return filepath.Join(fs.ContentRootFn(), fmt.Sprintf("%s.md", endpoint))
 }
 
 func ReadMarkdownFile(fs FileSystem, filePath string) ([]byte, error) {
-	fmt.Println(fs.ReadFile(filePath))
 	return fs.ReadFile(filePath)
 }
 
