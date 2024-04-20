@@ -20,8 +20,9 @@ func GetMarkdownFilePath(path string) string {
 	return filepath.Join("..", "..", "web", "content", fmt.Sprintf("%s.md", path))
 }
 
-func ReadMarkdownFile(filePath string) ([]byte, error) {
-	return os.ReadFile(filePath)
+func ReadMarkdownFile(fs FileSystem, filePath string) ([]byte, error) {
+	fmt.Println(fs.ReadFile(filePath))
+	return fs.ReadFile(filePath)
 }
 
 func ConvertMarkdownToHTML(content []byte) []byte {
@@ -35,8 +36,8 @@ func ConvertMarkdownToHTML(content []byte) []byte {
 }
 
 func RenderPage(w http.ResponseWriter, html []byte, markdownFile string) {
-    page := CreatePage(html, markdownFile)
-    ExecuteTemplate(w, page)
+	page := CreatePage(html, markdownFile)
+	ExecuteTemplate(w, page)
 }
 
 func CreatePage(html []byte, markdownFile string) page.Page {

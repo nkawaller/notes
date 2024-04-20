@@ -12,15 +12,17 @@ import (
 type Server struct {
 	staticHandler http.Handler
 	router        *http.ServeMux
+	fileSystem    utils.FileSystem
 }
 
-func NewServer() *Server {
+func NewServer(fileSystem utils.FileSystem) *Server {
 	fs := http.FileServer(http.Dir("./web/static"))
 	staticHandler := http.StripPrefix("/static/", fs)
 
 	s := &Server{
-		staticHandler,
-		http.NewServeMux(),
+		staticHandler: staticHandler,
+		router:        http.NewServeMux(),
+		fileSystem:    fileSystem,
 	}
 
 	s.router.Handle("/", http.HandlerFunc(s.handleRequest))
@@ -36,7 +38,7 @@ func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path
 	filename := strings.TrimPrefix(path, "/")
 	markdownFile := utils.GetMarkdownFilePath(filename)
-	content, err := utils.ReadMarkdownFile(markdownFile)
+	content, err := utils.ReadMarkdownFile(s.fileSystem, markdownFile)
 
 	if os.IsNotExist(err) {
 		http.NotFound(w, r)
