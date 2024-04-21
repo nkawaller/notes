@@ -9,7 +9,7 @@ type FileSystem interface {
 	ContentRootFn() string
 }
 
-type DefaultFileSystem struct{
+type DefaultFileSystem struct {
 	ContentRoot string
 }
 

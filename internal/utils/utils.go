@@ -42,18 +42,18 @@ func RenderPage(w http.ResponseWriter, html []byte, markdownFile string) {
 func CreatePage(html []byte, markdownFile string) page.Page {
 
 	// Get the file's last modified date
-	fileInfo, err := os.Stat(markdownFile)
-	if err != nil {
-		log.Fatal(err)
-	}
-	lastModified := fileInfo.ModTime()
+	// fileInfo, err := os.Stat(markdownFile)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// lastModified := fileInfo.ModTime()
 
 	// Create a Page struct
 	page := page.Page{
-		Title:        "Note",
-		HTML:         template.HTML(html),
-		LastModified: lastModified,
-		CSSPath:      "../static/output.css",
+		Title: "Note",
+		HTML:  template.HTML(html),
+		// LastModified: lastModified,
+		CSSPath: "../static/output.css",
 	}
 	return page
 }
