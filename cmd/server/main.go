@@ -9,7 +9,8 @@ import (
 )
 
 func main() {
-	fileSystem := utils.DefaultFileSystem{}
+	contentRoot := "../../web/content/"
+	fileSystem := utils.DefaultFileSystem{ContentRoot: contentRoot}
 	server := NewServer(fileSystem)
 
 	port := 8080
