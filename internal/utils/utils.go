@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"os"
 	"path/filepath"
 
 	"github.com/Depado/bfchroma/v2"
@@ -36,7 +35,7 @@ func ConvertMarkdownToHTML(content []byte) []byte {
 
 func RenderPage(w http.ResponseWriter, html []byte, fs FileSystem, markdownFile string) {
 	page := CreatePage(html, fs, markdownFile)
-	ExecuteTemplate(w, page)
+	ExecuteTemplate(w, fs, page)
 }
 
 func CreatePage(html []byte, fs FileSystem, markdownFile string) page.Page {
@@ -58,10 +57,11 @@ func CreatePage(html []byte, fs FileSystem, markdownFile string) page.Page {
 	return page
 }
 
-func ExecuteTemplate(w http.ResponseWriter, page page.Page) {
+func ExecuteTemplate(w http.ResponseWriter, fs FileSystem, page page.Page) {
 
 	// Read the base template file
-	baseTemplate, err := os.ReadFile("../../web/templates/base_template.html")
+	// baseTemplate, err := os.ReadFile("../../web/templates/base_template.html")
+    baseTemplate, err := fs.ReadFile(fs.GetTemplateLocation())
 	if err != nil {
 		log.Fatal(err)
 	}

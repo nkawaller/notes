@@ -1,0 +1,50 @@
+<!-- base_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <a href="/">N</a>
+        </div>
+        <div>
+            <a href="https://github.com/nkawaller" class="ml-4">Open Source</a>
+            <a href="/" class="ml-4">Notes</a>
+            <a href="#" class="ml-4">About</a>
+        </div>
+    </div>
+
+    <article>
+        <div>
+            <aside>
+                <span>Last updated {{.LastModified.Format "2006-01-02"}}</span>
+            </aside>
+            {{.HTML}}
+        </div>
+    </article>
+
+    <div>
+        <div>
+            <p>© 2024 Nathan Kawaller</p>
+            <p>All code <a href="https://raw.githubusercontent.com/git/git-scm.com/main/MIT-LICENSE.txt">MIT licensed</a></p>
+        </div>
+        <div>
+            <p><a href="https://www.instagram.com/vscode.shortcuts/?hl=en">Instagram</a></p>
+            <a href="https://www.linkedin.com/in/nkawaller/">LinkedIn</a>
+        </div>
+        <div>
+            <p>Washington D.C. <span id='current-time'><span></p>
+            <p><a href="https://magazine-b.com/">한국어</a></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
