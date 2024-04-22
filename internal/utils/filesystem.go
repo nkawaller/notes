@@ -7,7 +7,7 @@ import (
 type FileSystem interface {
 	ReadFile(filename string) ([]byte, error)
 	Stat(name string) (os.FileInfo, error)
-	ContentRootFn() string
+	GetContentRoot() string
 	GetTemplateLocation() string
 }
 
@@ -24,7 +24,7 @@ func (fs DefaultFileSystem) Stat(name string) (os.FileInfo, error) {
 	return os.Stat(name)
 }
 
-func (fs DefaultFileSystem) ContentRootFn() string {
+func (fs DefaultFileSystem) GetContentRoot() string {
 	return fs.ContentRoot
 }
 

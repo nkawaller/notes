@@ -25,7 +25,7 @@ func (s StubFileSystem) Stat(name string) (os.FileInfo, error) {
 	return s.fs.Stat(name)
 }
 
-func (s StubFileSystem) ContentRootFn() string {
+func (s StubFileSystem) GetContentRoot() string {
 	return s.ContentRoot
 }
 
