@@ -34,25 +34,25 @@ func ConvertMarkdownToHTML(content []byte) []byte {
 	)
 }
 
-func RenderPage(w http.ResponseWriter, html []byte, markdownFile string) {
-	page := CreatePage(html, markdownFile)
+func RenderPage(w http.ResponseWriter, html []byte, fs FileSystem, markdownFile string) {
+	page := CreatePage(html, fs, markdownFile)
 	ExecuteTemplate(w, page)
 }
 
-func CreatePage(html []byte, markdownFile string) page.Page {
+func CreatePage(html []byte, fs FileSystem, markdownFile string) page.Page {
 
 	// Get the file's last modified date
-	// fileInfo, err := os.Stat(markdownFile)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// lastModified := fileInfo.ModTime()
+	fileInfo, err := fs.Stat(markdownFile)
+	if err != nil {
+		log.Fatal(err)
+	}
+	lastModified := fileInfo.ModTime()
 
 	// Create a Page struct
 	page := page.Page{
 		Title: "Note",
 		HTML:  template.HTML(html),
-		// LastModified: lastModified,
+		LastModified: lastModified,
 		CSSPath: "../static/output.css",
 	}
 	return page

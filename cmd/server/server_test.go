@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+    "os"
 	"strings"
 	"testing"
 	"testing/fstest"
+	"time"
 )
 
 type StubFileSystem struct {
@@ -18,15 +20,22 @@ func (s StubFileSystem) ReadFile(filename string) ([]byte, error) {
 	return s.fs.ReadFile(filename)
 }
 
+func (s StubFileSystem) Stat(name string) (os.FileInfo, error) {
+    return s.fs.Stat(name)
+}
+
 func (s StubFileSystem) ContentRootFn() string {
 	return s.ContentRoot
 }
 
 func TestGETPost(t *testing.T) {
 
+	indexModTime, _ := time.Parse(time.RFC3339, "2023-10-30T12:00:00Z")
+	baconModTime, _ := time.Parse(time.RFC3339, "2024-11-11T12:00:00Z")
+
 	fs := fstest.MapFS{
-		"index.md": {Data: []byte("INDEX PAGE")},
-		"bacon.md": {Data: []byte("BACON")},
+        "index.md": {Data: []byte("INDEX PAGE"), ModTime: indexModTime},
+        "bacon.md": {Data: []byte("BACON"), ModTime: baconModTime},
 	}
 
 	// ContenRoot is an empty string here so we search for the file directly
@@ -41,12 +50,28 @@ func TestGETPost(t *testing.T) {
 		assertResponseBodyContainsPattern(t, response.Body.String(), "<p>INDEX PAGE</p>")
 	})
 
+	t.Run("Index page renders last updated time correctly", func(t *testing.T) {
+		request := newNoteRequest("/")
+		response := httptest.NewRecorder()
+		server.ServeHTTP(response, request)
+		assertStatus(t, response.Code, http.StatusOK)
+		assertResponseBodyContainsPattern(t, response.Body.String(), "Last updated 2023-10-30")
+	})
+
 	t.Run("Bacon page renders content correctly", func(t *testing.T) {
 		request := newNoteRequest("/bacon")
 		response := httptest.NewRecorder()
 		server.ServeHTTP(response, request)
 		assertStatus(t, response.Code, http.StatusOK)
 		assertResponseBodyContainsPattern(t, response.Body.String(), "<p>BACON</p>")
+	})
+
+	t.Run("Bacon page renders content correctly", func(t *testing.T) {
+		request := newNoteRequest("/bacon")
+		response := httptest.NewRecorder()
+		server.ServeHTTP(response, request)
+		assertStatus(t, response.Code, http.StatusOK)
+		assertResponseBodyContainsPattern(t, response.Body.String(), "Last updated 2024-11-11")
 	})
 
 	t.Run("Template contains correct header content", func(t *testing.T) {

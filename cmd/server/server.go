@@ -49,5 +49,5 @@ func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	html := utils.ConvertMarkdownToHTML(content)
-	utils.RenderPage(w, html, markdownFile)
+	utils.RenderPage(w, html, s.fileSystem, markdownFile)
 }
