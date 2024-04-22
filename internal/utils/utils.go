@@ -49,10 +49,10 @@ func CreatePage(html []byte, fs FileSystem, markdownFile string) page.Page {
 
 	// Create a Page struct
 	page := page.Page{
-		Title: "Note",
-		HTML:  template.HTML(html),
+		Title:        "Note",
+		HTML:         template.HTML(html),
 		LastModified: lastModified,
-		CSSPath: "../static/output.css",
+		CSSPath:      "../static/output.css",
 	}
 	return page
 }
@@ -60,8 +60,7 @@ func CreatePage(html []byte, fs FileSystem, markdownFile string) page.Page {
 func ExecuteTemplate(w http.ResponseWriter, fs FileSystem, page page.Page) {
 
 	// Read the base template file
-	// baseTemplate, err := os.ReadFile("../../web/templates/base_template.html")
-    baseTemplate, err := fs.ReadFile(fs.GetTemplateLocation())
+	baseTemplate, err := fs.ReadFile(fs.GetTemplateLocation())
 	if err != nil {
 		log.Fatal(err)
 	}

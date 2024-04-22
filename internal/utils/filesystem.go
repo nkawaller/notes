@@ -8,12 +8,12 @@ type FileSystem interface {
 	ReadFile(filename string) ([]byte, error)
 	Stat(name string) (os.FileInfo, error)
 	ContentRootFn() string
-    GetTemplateLocation() string
+	GetTemplateLocation() string
 }
 
 type DefaultFileSystem struct {
-	ContentRoot string
-    TemplateLocation string
+	ContentRoot      string
+	TemplateLocation string
 }
 
 func (fs DefaultFileSystem) ReadFile(filename string) ([]byte, error) {
