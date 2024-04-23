@@ -10,7 +10,8 @@ import (
 
 func main() {
 	contentRoot := "../../web/content/"
-	fileSystem := utils.DefaultFileSystem{ContentRoot: contentRoot}
+	templateLocation := "../../web/templates/base_template.html"
+	fileSystem := utils.DefaultFileSystem{ContentRoot: contentRoot, TemplateLocation: templateLocation}
 	server := NewServer(fileSystem)
 
 	port := 8080

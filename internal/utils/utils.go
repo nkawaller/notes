@@ -5,7 +5,6 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"os"
 	"path/filepath"
 
 	"github.com/Depado/bfchroma/v2"
@@ -15,9 +14,9 @@ import (
 
 func GetMarkdownFilePath(fs FileSystem, endpoint string) string {
 	if endpoint == "" {
-		return filepath.Join(fs.ContentRootFn(), "index.md")
+		return filepath.Join(fs.GetContentRoot(), "index.md")
 	}
-	return filepath.Join(fs.ContentRootFn(), fmt.Sprintf("%s.md", endpoint))
+	return filepath.Join(fs.GetContentRoot(), fmt.Sprintf("%s.md", endpoint))
 }
 
 func ReadMarkdownFile(fs FileSystem, filePath string) ([]byte, error) {
@@ -34,34 +33,34 @@ func ConvertMarkdownToHTML(content []byte) []byte {
 	)
 }
 
-func RenderPage(w http.ResponseWriter, html []byte, markdownFile string) {
-	page := CreatePage(html, markdownFile)
-	ExecuteTemplate(w, page)
+func RenderPage(w http.ResponseWriter, html []byte, fs FileSystem, markdownFile string) {
+	page := CreatePage(html, fs, markdownFile)
+	ExecuteTemplate(w, fs, page)
 }
 
-func CreatePage(html []byte, markdownFile string) page.Page {
+func CreatePage(html []byte, fs FileSystem, markdownFile string) page.Page {
 
 	// Get the file's last modified date
-	// fileInfo, err := os.Stat(markdownFile)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// lastModified := fileInfo.ModTime()
+	fileInfo, err := fs.Stat(markdownFile)
+	if err != nil {
+		log.Fatal(err)
+	}
+	lastModified := fileInfo.ModTime()
 
 	// Create a Page struct
 	page := page.Page{
-		Title: "Note",
-		HTML:  template.HTML(html),
-		// LastModified: lastModified,
-		CSSPath: "../static/output.css",
+		Title:        "Note",
+		HTML:         template.HTML(html),
+		LastModified: lastModified,
+		CSSPath:      "../static/output.css",
 	}
 	return page
 }
 
-func ExecuteTemplate(w http.ResponseWriter, page page.Page) {
+func ExecuteTemplate(w http.ResponseWriter, fs FileSystem, page page.Page) {
 
 	// Read the base template file
-	baseTemplate, err := os.ReadFile("../../web/templates/base_template.html")
+	baseTemplate, err := fs.ReadFile(fs.GetTemplateLocation())
 	if err != nil {
 		log.Fatal(err)
 	}
