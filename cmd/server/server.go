@@ -16,8 +16,7 @@ type Server struct {
 }
 
 func NewServer(fileSystem utils.FileSystem) *Server {
-	fs := http.FileServer(http.Dir("./web/static"))
-	staticHandler := http.StripPrefix("/static/", fs)
+	staticHandler := http.FileServer(http.Dir("web/static"))
 
 	s := &Server{
 		staticHandler: staticHandler,
@@ -25,6 +24,7 @@ func NewServer(fileSystem utils.FileSystem) *Server {
 		fileSystem:    fileSystem,
 	}
 
+	s.router.Handle("/static/", http.StripPrefix("/static/", staticHandler))
 	s.router.Handle("/", http.HandlerFunc(s.handleRequest))
 
 	return s
