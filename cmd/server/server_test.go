@@ -9,6 +9,8 @@ import (
 	"testing"
 	"testing/fstest"
 	"time"
+
+	"github.com/approvals/go-approval-tests"
 )
 
 type StubFileSystem struct {
@@ -103,6 +105,15 @@ func TestGETPost(t *testing.T) {
 		server.ServeHTTP(response, request)
 		assertStatus(t, response.Code, http.StatusNotFound)
 		assertResponseBody(t, response.Body.String(), "404 page not found\n")
+	})
+
+	t.Run("it converts a single post into HTML", func(t *testing.T) {
+		// buf := bytes.Buffer{}
+		request := newNoteRequest("/")
+		response := httptest.NewRecorder()
+		server.ServeHTTP(response, request)
+		assertStatus(t, response.Code, http.StatusOK)
+		approvals.VerifyString(t, response.Body.String())
 	})
 }
 
