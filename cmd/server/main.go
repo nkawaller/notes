@@ -9,8 +9,8 @@ import (
 )
 
 func main() {
-	contentRoot := "../../web/content/"
-	templateLocation := "../../web/templates/base_template.html"
+	contentRoot := "web/content/"
+	templateLocation := "web/templates/base_template.html"
 	fileSystem := utils.DefaultFileSystem{ContentRoot: contentRoot, TemplateLocation: templateLocation}
 	server := NewServer(fileSystem)
 
