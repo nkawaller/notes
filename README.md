@@ -18,3 +18,8 @@
   ```
   ./bin/runserver
   ```
+
+  Run the tests with:
+  ```
+  go test ./...
+  ```

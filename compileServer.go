@@ -19,5 +19,5 @@ func compileServer(source, output string) {
     if err := cmd.Run(); err != nil {
         panic(err)
     }
-    fmt.Printf("Binary created in %s", output)
+    fmt.Printf("Binary created in %s\n", output)
 }
