@@ -65,7 +65,7 @@ func ExecuteTemplate(w http.ResponseWriter, fs FileSystem, page page.Page) {
 		log.Fatal(err)
 	}
 
-	// Parse and execute the tempalte
+	// Parse and execute the template
 	tmpl, err := template.New("base").Parse(string(baseTemplate))
 	if err != nil {
 		log.Fatal(err)
