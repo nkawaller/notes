@@ -1,27 +1,35 @@
-
 # Notes - static site generator
-
 
 ## Development
 
-  In addition to being a static-site generator, there's also a live 
-  server you can run to get instant feedback while you develop. To set
-  this up, start the tailwind listener:
-  ```
-  ./runtailwind.sh
-  ```
+### Live Server
 
-  and then start the server:
-  ```
-  ./bin/runserver
-  ```
+In addition to being a static-site generator, there's also a live
+server you can run to get instant feedback while you develop. To set
+this up, start the tailwind listener:
 
-  To recompile the live server, run:
-  ```
-  go run compileServer.go
-  ```
+```
+./runtailwind.sh
+```
 
-  Run the tests with:
-  ```
-  go test ./...
-  ```
+and then start the server:
+
+```
+./bin/runserver
+```
+
+### Compile App
+
+To compile the live server and static site generator run:
+
+```
+go run compileBinaries.go
+```
+
+### Test
+
+Run the tests with:
+
+```
+go test ./...
+```
