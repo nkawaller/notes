@@ -10,36 +10,9 @@ import (
 	"testing/fstest"
 	"time"
 
+    "github.com/nkawaller/notes/internal/utils"
 	"github.com/approvals/go-approval-tests"
 )
-
-type StubFileSystem struct {
-	fs               fstest.MapFS
-	ContentRoot      string
-	TemplateLocation string
-}
-
-func (s StubFileSystem) MkdirAll(path string, perm os.FileMode) error {
-	dir := fstest.MapFile{Mode: perm | os.ModeDir}
-	s.fs[path] = &dir // MapFs needs a pointer
-	return nil
-}
-
-func (s StubFileSystem) ReadFile(filename string) ([]byte, error) {
-	return s.fs.ReadFile(filename)
-}
-
-func (s StubFileSystem) Stat(name string) (os.FileInfo, error) {
-	return s.fs.Stat(name)
-}
-
-func (s StubFileSystem) GetContentRoot() string {
-	return s.ContentRoot
-}
-
-func (s StubFileSystem) GetTemplateLocation() string {
-	return s.TemplateLocation
-}
 
 func TestGETPost(t *testing.T) {
 
@@ -54,8 +27,8 @@ func TestGETPost(t *testing.T) {
 	}
 
 	// ContenRoot is an empty string here so we search for the file directly
-	stubFileSystem := StubFileSystem{
-		fs:               fs,
+	stubFileSystem := utils.StubFileSystem{
+		FS:               fs,
 		ContentRoot:      "",
 		TemplateLocation: "base_template.html",
 	}
