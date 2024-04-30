@@ -26,6 +26,11 @@ To compile the live server and static site generator run:
 go run compileBinaries.go
 ```
 
+### Generate New Static Site
+```
+./bin/staticgen
+```
+
 ### Test
 
 Run the tests with:
