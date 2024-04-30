@@ -11,29 +11,8 @@ import (
 	"time"
 
 	"github.com/approvals/go-approval-tests"
+	"github.com/nkawaller/notes/internal/utils"
 )
-
-type StubFileSystem struct {
-	fs               fstest.MapFS
-	ContentRoot      string
-	TemplateLocation string
-}
-
-func (s StubFileSystem) ReadFile(filename string) ([]byte, error) {
-	return s.fs.ReadFile(filename)
-}
-
-func (s StubFileSystem) Stat(name string) (os.FileInfo, error) {
-	return s.fs.Stat(name)
-}
-
-func (s StubFileSystem) GetContentRoot() string {
-	return s.ContentRoot
-}
-
-func (s StubFileSystem) GetTemplateLocation() string {
-	return s.TemplateLocation
-}
 
 func TestGETPost(t *testing.T) {
 
@@ -48,7 +27,11 @@ func TestGETPost(t *testing.T) {
 	}
 
 	// ContenRoot is an empty string here so we search for the file directly
-	stubFileSystem := StubFileSystem{fs: fs, ContentRoot: "", TemplateLocation: "base_template.html"}
+	stubFileSystem := utils.StubFileSystem{
+		FS:               fs,
+		ContentRoot:      "",
+		TemplateLocation: "base_template.html",
+	}
 	server := NewServer(stubFileSystem)
 
 	t.Run("Index page renders content correctly", func(t *testing.T) {
