@@ -10,8 +10,8 @@ import (
 	"testing/fstest"
 	"time"
 
-    "github.com/nkawaller/notes/internal/utils"
 	"github.com/approvals/go-approval-tests"
+	"github.com/nkawaller/notes/internal/utils"
 )
 
 func TestGETPost(t *testing.T) {

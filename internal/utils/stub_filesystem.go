@@ -1,8 +1,8 @@
 package utils
 
 import (
-    "os"
-    "testing/fstest"
+	"os"
+	"testing/fstest"
 )
 
 type StubFileSystem struct {
