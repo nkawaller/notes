@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-	err := generateStaticSite()
+	ssg := NewStaticSiteGenerator()
+	err := ssg.generateStaticSite()
 	if err != nil {
 		log.Fatal(err)
 	}
