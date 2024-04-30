@@ -5,6 +5,7 @@ import (
 )
 
 type FileSystem interface {
+	MkdirAll(path string, perm os.FileMode) error
 	ReadFile(filename string) ([]byte, error)
 	Stat(name string) (os.FileInfo, error)
 	GetContentRoot() string
@@ -14,6 +15,10 @@ type FileSystem interface {
 type DefaultFileSystem struct {
 	ContentRoot      string
 	TemplateLocation string
+}
+
+func (fs DefaultFileSystem) MkdirAll(path string, perm os.FileMode) error {
+	return os.MkdirAll(path, perm)
 }
 
 func (fs DefaultFileSystem) ReadFile(filename string) ([]byte, error) {

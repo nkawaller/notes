@@ -19,6 +19,12 @@ type StubFileSystem struct {
 	TemplateLocation string
 }
 
+func (s StubFileSystem) MkdirAll(path string, perm os.FileMode) error {
+	dir := fstest.MapFile{Mode: perm | os.ModeDir}
+	s.fs[path] = &dir // MapFs needs a pointer
+	return nil
+}
+
 func (s StubFileSystem) ReadFile(filename string) ([]byte, error) {
 	return s.fs.ReadFile(filename)
 }
@@ -48,7 +54,11 @@ func TestGETPost(t *testing.T) {
 	}
 
 	// ContenRoot is an empty string here so we search for the file directly
-	stubFileSystem := StubFileSystem{fs: fs, ContentRoot: "", TemplateLocation: "base_template.html"}
+	stubFileSystem := StubFileSystem{
+		fs:               fs,
+		ContentRoot:      "",
+		TemplateLocation: "base_template.html",
+	}
 	server := NewServer(stubFileSystem)
 
 	t.Run("Index page renders content correctly", func(t *testing.T) {
