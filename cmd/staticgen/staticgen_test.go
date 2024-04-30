@@ -6,7 +6,9 @@ import (
 
 func TestSSG(t *testing.T) {
 
+	ssg := NewStaticSiteGenerator()
+
 	t.Run("testing the static site generator", func(t *testing.T) {
-		generateStaticSite()
+		ssg.generateStaticSite()
 	})
 }

@@ -4,7 +4,14 @@ import (
 	"os"
 )
 
-func generateStaticSite() error {
+type StaticSiteGenerator struct {}
+
+func NewStaticSiteGenerator() *StaticSiteGenerator {
+	s := &StaticSiteGenerator{}
+	return s
+}
+
+func (s *StaticSiteGenerator) generateStaticSite() error {
 	err := os.MkdirAll("deploy/static", 0755)
 	if err != nil {
 		return err
