@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/approvals/go-approval-tests"
-	"github.com/nkawaller/notes/internal/utils"
+	"github.com/nkawaller/notes/testutils"
 )
 
 func TestGETPost(t *testing.T) {
@@ -27,7 +27,7 @@ func TestGETPost(t *testing.T) {
 	}
 
 	// ContenRoot is an empty string here so we search for the file directly
-	stubFileSystem := utils.StubFileSystem{
+	stubFileSystem := testutils.StubFileSystem{
 		FS:               fs,
 		ContentRoot:      "",
 		TemplateLocation: "base_template.html",

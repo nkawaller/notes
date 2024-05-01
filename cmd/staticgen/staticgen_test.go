@@ -6,6 +6,7 @@ import (
 	"testing/fstest"
 	"time"
 
+	"github.com/nkawaller/notes/testutils"
 	"github.com/nkawaller/notes/internal/utils"
 )
 
@@ -21,7 +22,7 @@ func TestSSG(t *testing.T) {
 		"base_template.html": {Data: []byte(mockTemplate)},
 	}
 
-	stubFileSystem := utils.StubFileSystem{
+	stubFileSystem := testutils.StubFileSystem{
 		FS:               fs,
 		ContentRoot:      "",
 		TemplateLocation: "base_template.html",
