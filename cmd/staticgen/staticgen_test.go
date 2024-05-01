@@ -4,13 +4,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/nkawaller/notes/testutils"
 	"github.com/nkawaller/notes/internal/utils"
+	"github.com/nkawaller/notes/testutils"
 )
 
 func TestSSG(t *testing.T) {
 
-    fs := testutils.StubFS
+	fs := testutils.StubFS
 	ssg := NewStaticSiteGenerator(fs)
 	dirPath := "deploy/static"
 
