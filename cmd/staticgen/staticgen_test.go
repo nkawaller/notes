@@ -12,23 +12,30 @@ func TestSSG(t *testing.T) {
 
 	fs := testutils.StubFS
 	ssg := NewStaticSiteGenerator(fs)
-	dirPath := "deploy/static"
 
 	t.Run("Static site generator creates the deploy directory", func(t *testing.T) {
-		assertDirNotExist(t, fs, dirPath)
+		assertNotExist(t, fs, "deploy/static")
 		ssg.generateStaticSite()
-		assertDirExists(t, fs, dirPath)
-
+		assertExists(t, fs, "deploy/static")
 	})
+
+	// t.Run("HTML files are created from existing markdown files", func(t *testing.T) {
+	// 	assertExists(t, fs, "index.md")
+	// 	assertNotExist(t, fs, "index.html")
+	// 	ssg.generateStaticSite()
+ //        for f := range fs.FS {
+ //            fmt.Println("File:", f)
+ //        }
+	// })
 }
 
-func assertDirNotExist(t testing.TB, fs utils.FileSystem, path string) {
+func assertNotExist(t testing.TB, fs utils.FileSystem, path string) {
 	if _, err := fs.Stat(path); !os.IsNotExist(err) {
 		t.Errorf("Directory %s should not exist initially", path)
 	}
 }
 
-func assertDirExists(t testing.TB, fs utils.FileSystem, path string) {
+func assertExists(t testing.TB, fs utils.FileSystem, path string) {
 	if _, err := fs.Stat(path); err != nil {
 		t.Errorf("Directory %s should exist after generating static site", path)
 	}

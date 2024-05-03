@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"path/filepath"
@@ -29,6 +30,7 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 	}
 
 	files, err := s.fileSystem.ReadDir(s.fileSystem.GetContentRoot())
+	fmt.Println(s.fileSystem)
 	if err != nil {
 		log.Fatal(err)
 	}
