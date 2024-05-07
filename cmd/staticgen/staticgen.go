@@ -30,7 +30,6 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 	}
 
 	files, err := s.fileSystem.ReadDir(s.fileSystem.GetContentRoot())
-	fmt.Println(s.fileSystem)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -56,10 +55,13 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 			html := utils.ConvertMarkdownToHTML(content)
 
 			fileInfo, err := s.fileSystem.Stat(filepath.Join(s.fileSystem.GetContentRoot(), path))
+			fmt.Println("FILEINFO: ", fileInfo)
 			if err != nil {
+				fmt.Println("In the STAT error")
 				log.Fatal(err)
 			}
 			lastModified := fileInfo.ModTime()
+			fmt.Println("LASTMOD: ", lastModified)
 
 			page := page.Page{
 				Title:        "Markdown Blog",
@@ -69,7 +71,9 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 			}
 
 			outputPath := filepath.Join("deploy", strings.TrimSuffix(path, ".md")+".html")
+			fmt.Println("OUTPUT PATH: ", outputPath)
 			outputFile, err := s.fileSystem.Create(outputPath)
+			fmt.Println("OUTPUT FILE: ", outputFile)
 			if err != nil {
 				log.Fatal(err)
 			}
@@ -77,6 +81,9 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 
 			err = tmpl.Execute(outputFile, page)
 			if err != nil {
+				fmt.Println("ARE WE IN THE EXECUTE ERR???")
+				fmt.Printf("OUTPUT FILE: %v\n", outputFile)
+				fmt.Printf("Page: %s\n", page)
 				log.Fatal(err)
 			}
 		}

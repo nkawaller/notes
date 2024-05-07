@@ -10,13 +10,13 @@ import (
 
 func TestSSG(t *testing.T) {
 
-	fs := testutils.StubFS
-	ssg := NewStaticSiteGenerator(fs)
+	MOCKFS := testutils.StubFS
+	ssg := NewStaticSiteGenerator(MOCKFS)
 
 	t.Run("Static site generator creates the deploy directory", func(t *testing.T) {
-		assertNotExist(t, fs, "deploy/static")
+		assertNotExist(t, MOCKFS, "deploy/static")
 		ssg.generateStaticSite()
-		assertExists(t, fs, "deploy/static")
+		assertExists(t, MOCKFS, "deploy/static")
 	})
 
 	// t.Run("HTML files are created from existing markdown files", func(t *testing.T) {

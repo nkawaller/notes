@@ -1,9 +1,11 @@
 package testutils
 
 import (
+	"fmt"
 	"bytes"
-	"os"
 	"testing/fstest"
+	"io/fs"
+	"os"
 )
 
 type StubFileSystem struct {
@@ -13,19 +15,21 @@ type StubFileSystem struct {
 }
 
 func (s StubFileSystem) Create(name string) (*os.File, error) {
-    // Create a buffer to write the content
-    buffer := &bytes.Buffer{}
+	// Create a buffer to store the content
+	buf := new(bytes.Buffer)
+	// Add the buffer as a file to the MapFS
+	s.FS[name] = &fstest.MapFile{
+		Data: buf.Bytes(),
+	}
+	// Return a new file object
+	// file := &os.File{}
+	//
+	fmt.Printf("Name is >>>>>>>> %s\n", name)
+	fmt.Println("Filesystem name >>>>>>> ", s.FS[name])
+	fmt.Println("Filesystem >>>>>>> ", s.FS)
 
-    // Create a new fs.File instance with the buffer as its data
-    file := &fstest.MapFile{
-        Data: buffer.Bytes(),
-    }
 
-    // Add the file to the MapFS
-    s.FS[name] = file
-
-    // Return nil for the os.File
-    return nil, nil
+	return nil, nil
 }
 
 func (s StubFileSystem) MkdirAll(path string, perm os.FileMode) error {
@@ -34,7 +38,7 @@ func (s StubFileSystem) MkdirAll(path string, perm os.FileMode) error {
 	return nil
 }
 
-func (s StubFileSystem) ReadDir(name string) ([]os.DirEntry, error) {
+func (s StubFileSystem) ReadDir(name string) ([]fs.DirEntry, error) {
 	return s.FS.ReadDir(name)
 }
 
