@@ -2,9 +2,10 @@ package main
 
 import (
 	"html/template"
+	"io"
 	"log"
 	"path/filepath"
-    "strings"
+	"strings"
 
 	"github.com/nkawaller/notes/internal/page"
 	"github.com/nkawaller/notes/internal/utils"
@@ -71,7 +72,12 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 			if err != nil {
 				log.Fatal(err)
 			}
-			defer outputFile.Close()
+
+			defer func() {
+				if closer, ok := outputFile.(io.WriteCloser); ok {
+					closer.Close()
+				}
+			}()
 
 			err = tmpl.Execute(outputFile, page)
 			if err != nil {
