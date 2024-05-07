@@ -24,10 +24,9 @@ func NewStaticSiteGenerator(fileSystem utils.FileSystem) *StaticSiteGenerator {
 
 func (s *StaticSiteGenerator) generateStaticSite() error {
 
-	err := s.fileSystem.MkdirAll("deploy/static", 0755)
-	if err != nil {
-		return err
-	}
+    if err := s.createStaticDir(); err != nil {
+        return err
+    }
 
 	files, err := s.fileSystem.ReadDir(s.fileSystem.GetContentRoot())
 	if err != nil {
@@ -87,4 +86,12 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 
 	}
 	return nil
+}
+
+func (s *StaticSiteGenerator) createStaticDir() error {
+    err := s.fileSystem.MkdirAll("deploy/static", 0755)
+	if err != nil {
+		return err
+	}
+    return nil
 }
