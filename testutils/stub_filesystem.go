@@ -1,11 +1,12 @@
 package testutils
 
 import (
-	"fmt"
+	"bufio"
 	"bytes"
-	"testing/fstest"
+	"io"
 	"io/fs"
 	"os"
+	"testing/fstest"
 )
 
 type StubFileSystem struct {
@@ -14,22 +15,14 @@ type StubFileSystem struct {
 	TemplateLocation string
 }
 
-func (s StubFileSystem) Create(name string) (*os.File, error) {
-	// Create a buffer to store the content
+// Create creates a file with the given name
+func (s StubFileSystem) Create(name string) (io.Writer, error) {
 	buf := new(bytes.Buffer)
-	// Add the buffer as a file to the MapFS
+	writer := bufio.NewWriter(buf)
 	s.FS[name] = &fstest.MapFile{
 		Data: buf.Bytes(),
 	}
-	// Return a new file object
-	// file := &os.File{}
-	//
-	fmt.Printf("Name is >>>>>>>> %s\n", name)
-	fmt.Println("Filesystem name >>>>>>> ", s.FS[name])
-	fmt.Println("Filesystem >>>>>>> ", s.FS)
-
-
-	return nil, nil
+	return writer, nil
 }
 
 func (s StubFileSystem) MkdirAll(path string, perm os.FileMode) error {

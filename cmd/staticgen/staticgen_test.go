@@ -23,9 +23,9 @@ func TestSSG(t *testing.T) {
 	// 	assertExists(t, fs, "index.md")
 	// 	assertNotExist(t, fs, "index.html")
 	// 	ssg.generateStaticSite()
- //        for f := range fs.FS {
- //            fmt.Println("File:", f)
- //        }
+	//        for f := range fs.FS {
+	//            fmt.Println("File:", f)
+	//        }
 	// })
 }
 

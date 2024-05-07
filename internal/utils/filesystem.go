@@ -1,14 +1,15 @@
 package utils
 
 import (
+	"io"
 	"os"
 )
 
 type FileSystem interface {
-	Create(name string) (*os.File, error)
+	Create(name string) (io.Writer, error)
 	MkdirAll(path string, perm os.FileMode) error
 	ReadFile(filename string) ([]byte, error)
-    ReadDir(name string) ([]os.DirEntry, error)
+	ReadDir(name string) ([]os.DirEntry, error)
 	Stat(name string) (os.FileInfo, error)
 	GetContentRoot() string
 	GetTemplateLocation() string
@@ -19,7 +20,7 @@ type DefaultFileSystem struct {
 	TemplateLocation string
 }
 
-func (fs DefaultFileSystem) Create(name string) (*os.File, error) {
+func (fs DefaultFileSystem) Create(name string) (io.Writer, error) {
 	return os.Create(name)
 }
 
@@ -32,7 +33,7 @@ func (fs DefaultFileSystem) ReadFile(filename string) ([]byte, error) {
 }
 
 func (fs DefaultFileSystem) ReadDir(name string) ([]os.DirEntry, error) {
-    return os.ReadDir(name)
+	return os.ReadDir(name)
 }
 
 func (fs DefaultFileSystem) Stat(name string) (os.FileInfo, error) {
