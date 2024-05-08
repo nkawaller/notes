@@ -23,7 +23,7 @@ func TestSSG(t *testing.T) {
 		assertExists(t, mockFS, "web/content/index.md")
 		assertNotExist(t, mockFS, "index.html")
 		ssg.generateStaticSite()
-	    assertExists(t, mockFS, "deploy/index.html")
+		assertExists(t, mockFS, "deploy/index.html")
 	})
 }
 
