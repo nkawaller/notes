@@ -3,6 +3,7 @@ package main
 import (
 	"html/template"
 	"io"
+	"io/fs"
 	"log"
 	"path/filepath"
 	"strings"
@@ -24,8 +25,7 @@ func NewStaticSiteGenerator(fileSystem utils.FileSystem) *StaticSiteGenerator {
 
 func (s *StaticSiteGenerator) generateStaticSite() error {
 
-	err := s.fileSystem.MkdirAll("deploy/static", 0755)
-	if err != nil {
+	if err := s.createStaticDir(); err != nil {
 		return err
 	}
 
@@ -45,46 +45,61 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 	}
 
 	for _, file := range files {
-		if !file.IsDir() && filepath.Ext(file.Name()) == ".md" {
-			path := file.Name()
-			content, err := utils.ReadMarkdownFile(s.fileSystem, filepath.Join(s.fileSystem.GetContentRoot(), path))
-			if err != nil {
-				log.Fatal(err)
-			}
+		err := s.processMarkdownFile(file, tmpl)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	return nil
+}
 
-			html := utils.ConvertMarkdownToHTML(content)
+func (s *StaticSiteGenerator) createStaticDir() error {
+	err := s.fileSystem.MkdirAll("deploy/static", 0755)
+	if err != nil {
+		return err
+	}
+	return nil
+}
 
-			fileInfo, err := s.fileSystem.Stat(filepath.Join(s.fileSystem.GetContentRoot(), path))
-			if err != nil {
-				log.Fatal(err)
-			}
-			lastModified := fileInfo.ModTime()
-
-			page := page.Page{
-				Title:        "Markdown Blog",
-				HTML:         template.HTML(html),
-				LastModified: lastModified,
-				CSSPath:      "./static/output.css",
-			}
-
-			outputPath := filepath.Join("deploy", strings.TrimSuffix(path, ".md")+".html")
-			outputFile, err := s.fileSystem.Create(outputPath)
-			if err != nil {
-				log.Fatal(err)
-			}
-
-			defer func() {
-				if closer, ok := outputFile.(io.WriteCloser); ok {
-					closer.Close()
-				}
-			}()
-
-			err = tmpl.Execute(outputFile, page)
-			if err != nil {
-				log.Fatal(err)
-			}
+func (s *StaticSiteGenerator) processMarkdownFile(file fs.DirEntry, tmpl *template.Template) error {
+	if !file.IsDir() && filepath.Ext(file.Name()) == ".md" {
+		path := file.Name()
+		content, err := utils.ReadMarkdownFile(s.fileSystem, filepath.Join(s.fileSystem.GetContentRoot(), path))
+		if err != nil {
+			return err
 		}
 
+		html := utils.ConvertMarkdownToHTML(content)
+
+		fileInfo, err := s.fileSystem.Stat(filepath.Join(s.fileSystem.GetContentRoot(), path))
+		if err != nil {
+			return err
+		}
+		lastModified := fileInfo.ModTime()
+
+		page := page.Page{
+			Title:        "Markdown Blog",
+			HTML:         template.HTML(html),
+			LastModified: lastModified,
+			CSSPath:      "./static/output.css",
+		}
+
+		outputPath := filepath.Join("deploy", strings.TrimSuffix(path, ".md")+".html")
+		outputFile, err := s.fileSystem.Create(outputPath)
+		if err != nil {
+			return err
+		}
+
+		defer func() {
+			if closer, ok := outputFile.(io.WriteCloser); ok {
+				closer.Close()
+			}
+		}()
+
+		err = tmpl.Execute(outputFile, page)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }

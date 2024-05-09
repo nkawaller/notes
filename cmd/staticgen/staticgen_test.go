@@ -13,9 +13,9 @@ func TestSSG(t *testing.T) {
 	mockFS := testutils.StubFS
 	ssg := NewStaticSiteGenerator(mockFS)
 
-	t.Run("Static site generator creates the deploy directory", func(t *testing.T) {
+	t.Run("createStaticDir() creates the deploy directory", func(t *testing.T) {
 		assertNotExist(t, mockFS, "deploy/static")
-		ssg.generateStaticSite()
+		ssg.createStaticDir()
 		assertExists(t, mockFS, "deploy/static")
 	})
 
@@ -23,7 +23,7 @@ func TestSSG(t *testing.T) {
 		assertExists(t, mockFS, "web/content/index.md")
 		assertNotExist(t, mockFS, "index.html")
 		ssg.generateStaticSite()
-	    assertExists(t, mockFS, "deploy/index.html")
+		assertExists(t, mockFS, "deploy/index.html")
 	})
 }
 
