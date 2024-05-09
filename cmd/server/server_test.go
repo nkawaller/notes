@@ -72,7 +72,6 @@ func TestGETPost(t *testing.T) {
 	})
 
 	t.Run("it converts a single post into HTML", func(t *testing.T) {
-		// buf := bytes.Buffer{}
 		request := newNoteRequest("/")
 		response := httptest.NewRecorder()
 		server.ServeHTTP(response, request)
@@ -103,17 +102,5 @@ func assertResponseBody(t testing.TB, got, want string) {
 func assertResponseBodyContainsPattern(t *testing.T, body, pattern string) {
 	if !strings.Contains(body, pattern) {
 		t.Errorf("Couldn't find the following pattern: %s in response body", pattern)
-	}
-}
-
-func assertResponseByteLength(t testing.TB, got, want int) {
-	if got != want {
-		t.Errorf("Unexpected number of bytes; got %d, want %d", got, want)
-	}
-}
-
-func assertSameBytes(t testing.TB, got, want string) {
-	if got != want {
-		t.Errorf("Unexpected bytes; got %q, want %q", got, want)
 	}
 }
