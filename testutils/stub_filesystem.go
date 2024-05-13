@@ -43,6 +43,14 @@ func (s StubFileSystem) Stat(name string) (os.FileInfo, error) {
 	return s.FS.Stat(name)
 }
 
+func (s StubFileSystem) WriteFile(name string, data []byte, perm os.FileMode) error {
+	s.FS[name] = &fstest.MapFile{
+		Data: data,
+		Mode: perm,
+	}
+	return nil
+}
+
 func (s StubFileSystem) GetContentRoot() string {
 	return s.ContentRoot
 }

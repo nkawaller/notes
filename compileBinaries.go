@@ -10,9 +10,7 @@ func main() {
 
 	compileBinary("./cmd/server", "./bin/runserver")
 	compileBinary("./cmd/staticgen", "./bin/staticgen")
-	compileBinary("./cmd/buildindex", "./bin/buildindex")
 
-    executeBinary("./bin/buildindex")
     executeBinary("./bin/staticgen")
 	copyStaticFile("./web/static/output.css", "./deploy/static/output.css")
 

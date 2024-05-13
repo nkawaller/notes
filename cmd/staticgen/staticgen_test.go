@@ -25,6 +25,12 @@ func TestSSG(t *testing.T) {
 		ssg.generateStaticSite()
 		assertExists(t, mockFS, "deploy/index.html")
 	})
+
+	t.Run("Root page (note index) is created in correct location", func(t *testing.T) {
+		assertNotExist(t, mockFS, "deploy/root.html")
+		ssg.generateRootPage()
+		assertExists(t, mockFS, "web/content/root.md")
+	})
 }
 
 func assertNotExist(t testing.TB, fs utils.FileSystem, path string) {

@@ -23,14 +23,14 @@ func generateLandingPage() {
     // Create a list of markdown filenames
     var markdownFiles []string
     for _, file := range files {
-        if strings.HasSuffix(file.Name(), ".md") && file.Name() != "index.md" {
+        if strings.HasSuffix(file.Name(), ".md") && file.Name() != "root.md" {
             markdownFiles = append(markdownFiles, file.Name())
         }
     }
 
     markdownContent := generateMarkdownContent(markdownFiles)
 
-    outputFile := "web/content/index.md"
+    outputFile := "web/content/root.md"
     err = os.WriteFile(outputFile, []byte(markdownContent), 0755)
     if err != nil {
         log.Fatal(err)
@@ -71,4 +71,3 @@ func generateMarkdownContent(files []string) string {
 
     return content.String()
 }
-

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"io"
 	"io/fs"
@@ -21,6 +22,32 @@ func NewStaticSiteGenerator(fileSystem utils.FileSystem) *StaticSiteGenerator {
 		fileSystem: fileSystem,
 	}
 	return s
+}
+
+func (s *StaticSiteGenerator) generateRootPage() {
+
+	files, err := s.fileSystem.ReadDir(s.fileSystem.GetContentRoot())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var markdownFiles []string
+	for _, file := range files {
+		if strings.HasSuffix(file.Name(), ".md") && file.Name() != "rood.md" {
+			markdownFiles = append(markdownFiles, file.Name())
+		}
+	}
+
+	markdownContent := utils.GenerateMarkdownContent(markdownFiles, s.fileSystem)
+	outputFile := filepath.Join(s.fileSystem.GetContentRoot(), "root.md")
+
+	err = s.fileSystem.WriteFile(outputFile, []byte(markdownContent), 0755)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Markdown file generated and saved to %s\n", outputFile)
+
 }
 
 func (s *StaticSiteGenerator) generateStaticSite() error {
