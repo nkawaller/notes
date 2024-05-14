@@ -11,6 +11,7 @@ type FileSystem interface {
 	ReadFile(filename string) ([]byte, error)
 	ReadDir(name string) ([]os.DirEntry, error)
 	Stat(name string) (os.FileInfo, error)
+	WriteFile(name string, data []byte, perm os.FileMode) error
 	GetContentRoot() string
 	GetTemplateLocation() string
 }
@@ -38,6 +39,14 @@ func (fs DefaultFileSystem) ReadDir(name string) ([]os.DirEntry, error) {
 
 func (fs DefaultFileSystem) Stat(name string) (os.FileInfo, error) {
 	return os.Stat(name)
+}
+
+func (fs DefaultFileSystem) WriteFile(name string, data []byte, perm os.FileMode) error {
+	err := os.WriteFile(name, data, perm)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func (fs DefaultFileSystem) GetContentRoot() string {

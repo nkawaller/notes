@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
@@ -24,6 +25,15 @@ func TestSSG(t *testing.T) {
 		assertNotExist(t, mockFS, "index.html")
 		ssg.generateStaticSite()
 		assertExists(t, mockFS, "deploy/index.html")
+	})
+
+	t.Run("Root page (note index) is created in correct location", func(t *testing.T) {
+		assertNotExist(t, mockFS, "web/content/root.md")
+		assertNotExist(t, mockFS, "deploy/root.html")
+		ssg.generateRootPage()
+		assertExists(t, mockFS, "web/content/root.md")
+		ssg.generateStaticSite()
+		assertExists(t, mockFS, "deploy/root.html")
 	})
 }
 
