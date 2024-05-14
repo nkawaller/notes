@@ -25,18 +25,18 @@ To compile the live server and static site generator run:
 ```
 go run compileBinaries.go
 ```
-For right now, this command actually compiles both binaries, generates
-the static site, and copies the css file over to the `deploy/static`
-directory.
 
 ### Generate New Static Site
+
+Run the following command to generate the static site, and copy the css file over to the `deploy/static` directory.
+
 ```
-./bin/staticgen
+go run buildSite.go
 ```
 
 ### Test
 
-Run the tests with:
+From the root directory run all tests with:
 
 ```
 go test ./...
