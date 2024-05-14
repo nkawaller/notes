@@ -80,34 +80,34 @@ func ExecuteTemplate(w http.ResponseWriter, fs FileSystem, page page.Page) {
 }
 
 func GenerateMarkdownContent(files []string, fs FileSystem) string {
-    // Sort files alphabetically
-    sort.Strings(files)
+	// Sort files alphabetically
+	sort.Strings(files)
 
-    var content strings.Builder
+	var content strings.Builder
 
-    content.WriteString("# All projects\n\n")
-    content.WriteString("|      |                     |\n")
-    content.WriteString("|------|---------------------|\n")
+	content.WriteString("# All projects\n\n")
+	content.WriteString("|      |                     |\n")
+	content.WriteString("|------|---------------------|\n")
 
-    for _, file := range files {
-        // Get file modification time
-        fileInfo, err := fs.Stat("web/content/" + file)
-        if err != nil {
-            log.Fatal(err)
-        }
-        modTime := fileInfo.ModTime().Year()
+	for _, file := range files {
+		// Get file modification time
+		fileInfo, err := fs.Stat("web/content/" + file)
+		if err != nil {
+			log.Fatal(err)
+		}
+		modTime := fileInfo.ModTime().Year()
 
-        link := fmt.Sprintf("| %d | [%s][] |\n", modTime, strings.TrimSuffix(file, ".md"))
-        content.WriteString(link)
-    }
+		link := fmt.Sprintf("| %d | [%s][] |\n", modTime, strings.TrimSuffix(file, ".md"))
+		content.WriteString(link)
+	}
 
-    content.WriteString("\n")
+	content.WriteString("\n")
 
-    // Append file links
-    for _, file := range files {
-        link := fmt.Sprintf("[%s]: %s\n", strings.TrimSuffix(file, ".md"), strings.TrimSuffix(file, ".md"))
-        content.WriteString(link)
-    }
+	// Append file links
+	for _, file := range files {
+		link := fmt.Sprintf("[%s]: %s\n", strings.TrimSuffix(file, ".md"), strings.TrimSuffix(file, ".md"))
+		content.WriteString(link)
+	}
 
-    return content.String()
+	return content.String()
 }
