@@ -12,6 +12,7 @@ func main() {
 	templateLocation := "web/templates/base_template.html"
 	fileSystem := utils.DefaultFileSystem{ContentRoot: contentRoot, TemplateLocation: templateLocation}
 	ssg := NewStaticSiteGenerator(fileSystem)
+	ssg.generateRootPage()
 	err := ssg.generateStaticSite()
 	if err != nil {
 		log.Fatal(err)

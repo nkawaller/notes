@@ -86,8 +86,8 @@ func GenerateMarkdownContent(files []string, fs FileSystem) string {
     var content strings.Builder
 
     content.WriteString("# All projects\n\n")
-    content.WriteString("|      |                                   |\n")
-    content.WriteString("|-------|-----------------------------------|\n")
+    content.WriteString("|      |                     |\n")
+    content.WriteString("|------|---------------------|\n")
 
     for _, file := range files {
         // Get file modification time
