@@ -10,6 +10,7 @@
 
 bin/
 deploy/
+web/content/root.md
 
 # Test binary, built with `go test -c`
 *.test
