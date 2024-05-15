@@ -1,6 +1,4 @@
-# Notes - static site generator
-
-[![Build Site](https://github.com/nkawaller/notes/actions/workflows/02-build-site.yml/badge.svg?branch=main)](https://github.com/nkawaller/notes/actions/workflows/02-build-site.yml)
+# Notes - static site generator [![tests](https://github.com/nkawaller/notes/actions/workflows/01-test.yml/badge.svg)](https://github.com/nkawaller/notes/actions/workflows/01-test.yml) [![build](https://github.com/nkawaller/notes/actions/workflows/02-build-site.yml/badge.svg?branch=main)](https://github.com/nkawaller/notes/actions/workflows/02-build-site.yml)
 
 ## Development
 
