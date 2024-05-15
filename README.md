@@ -1,5 +1,7 @@
 # Notes - static site generator
 
+[![Build Site](https://github.com/nkawaller/notes/actions/workflows/02-build-site.yml/badge.svg?branch=main)](https://github.com/nkawaller/notes/actions/workflows/02-build-site.yml)
+
 ## Development
 
 ### Live Server
@@ -18,17 +20,11 @@ and then start the server:
 ./bin/runserver
 ```
 
-### Compile App
+### Compile Binaries and Build Static Site
 
-To compile the live server and static site generator run:
-
-```
-go run compileBinaries.go
-```
-
-### Generate New Static Site
-
-Run the following command to generate the static site, and copy the css file over to the `deploy/static` directory.
+Run the following command to generate the static site, and copy the css 
+file over to the `deploy/static` directory. The runserver and staticgen
+binaries are also created when running this command.
 
 ```
 go run buildSite.go
