@@ -1,27 +1,51 @@
-name: deploy
+name: build-and-deploy
 
 on:
   push:
     branches:
-      - '*'
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: Install Go
+        uses: actions/setup-go@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          go-version: "1.21.1"
+
+      - name: Build site
+        run: go run buildSite.go
+
+      - name: Archive site artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: notes
+          path: deploy/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: notes
+          path: deploy
+
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip3 install awscli --upgrade --user
 
       - name: Deploy to S3
-        uses: aws-actions/amazon-s3-deploy@v1
-        with:
-          bucket-name: kawaller-notes
-          local-path: deploy/
-
+        run: |
+          aws s3 sync ./deploy s3://your-bucket-name --delete
