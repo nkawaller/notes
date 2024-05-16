@@ -48,4 +48,4 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync ./deploy s3://your-bucket-name --delete
+          aws s3 sync ./deploy s3://nkawaller-notes --delete
