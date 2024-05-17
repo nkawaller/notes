@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./static/output.css" />
+    <title>Markdown Blog</title>
+</head>
+
+<body class="flex min-h-screen flex-col text-base font-medium text-zinc-900 md:text-lg">
+    
+    <div class="p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            
+            <div class="float-left">
+                <a href="/" class="text-8xl">N</a>
+            </div>
+
+            
+            <div class="float-right">
+                <a href="https://github.com/nkawaller" class="ml-4">Open Source</a>
+                <a href="/" class="ml-4">Notes</a>
+                <a href="#" class="ml-4">About</a>
+            </div>
+        </div>
+    </div>
+
+    
+    <article class="prose prose-zinc prose-base md:prose-lg prose-headings:font-semibold mx-auto mt-16 flex-1 p-4">
+        
+        <div>
+            <aside class="mb-3.5">
+                <span class="text-xs text-zinc-500">
+                    Last updated 2024-05-16
+                </span>
+            </aside>
+            <h1>All projects</h1>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>2024</td>
+<td><a href="hello">hello</a></td>
+</tr>
+
+<tr>
+<td>2024</td>
+<td><a href="index">index</a></td>
+</tr>
+
+<tr>
+<td>2024</td>
+<td><a href="lambdas">lambdas</a></td>
+</tr>
+
+<tr>
+<td>2024</td>
+<td><a href="root">root</a></td>
+</tr>
+
+<tr>
+<td>2024</td>
+<td><a href="rust-intro">rust-intro</a></td>
+</tr>
+
+<tr>
+<td>2024</td>
+<td><a href="test">test</a></td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+    </article>
+
+    
+    <div class="mt-16 p-4">
+        <div class="container mx-auto flex flex-col md:flex-row md:justify-between">
+            
+            <div>
+                <p>© 2024 Nathan Kawaller</p>
+                <p>All code <a href=" https://raw.githubusercontent.com/git/git-scm.com/main/MIT-LICENSE.txt">MIT
+                        licensed</a></p>
+                
+            </div>
+
+            
+            <div>
+                
+                <p><a href="https://www.instagram.com/vscode.shortcuts/?hl=en">Instagram</a></p>
+                <a href="https://www.linkedin.com/in/nkawaller/">LinkedIn</a>
+            </div>
+
+            
+            <div>
+                
+                <p>
+                    Washington D.C. <span id='current-time'><span>
+                </p>
+                <p><a href="https://magazine-b.com/">한국어</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    
+    function updateTime() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+
+        
+        minutes = (minutes < 10 ? '0' : '') + minutes;
+        seconds = (seconds < 10 ? '0' : '') + seconds;
+
+        var formattedTime = hours + ":" + minutes + ":" + seconds;
+        document.getElementById("current-time").textContent = formattedTime;
+    }
+
+    
+    setInterval(updateTime, 1000);
+
+    
+    updateTime();
+</script>
+
+</html>

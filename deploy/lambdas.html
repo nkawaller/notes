@@ -1,0 +1,171 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./static/output.css" />
+    <title>Markdown Blog</title>
+</head>
+
+<body class="flex min-h-screen flex-col text-base font-medium text-zinc-900 md:text-lg">
+    
+    <div class="p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            
+            <div class="float-left">
+                <a href="/" class="text-8xl">N</a>
+            </div>
+
+            
+            <div class="float-right">
+                <a href="https://github.com/nkawaller" class="ml-4">Open Source</a>
+                <a href="/" class="ml-4">Notes</a>
+                <a href="#" class="ml-4">About</a>
+            </div>
+        </div>
+    </div>
+
+    
+    <article class="prose prose-zinc prose-base md:prose-lg prose-headings:font-semibold mx-auto mt-16 flex-1 p-4">
+        
+        <div>
+            <aside class="mb-3.5">
+                <span class="text-xs text-zinc-500">
+                    Last updated 2024-03-24
+                </span>
+            </aside>
+            <h1>Lambda Functions</h1>
+
+<p>Anonymous function.
+Pure, does not keep any state.</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span><span style="color:#fe8019">def</span> <span style="color:#fabd2f">identity</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> x
+</span></span></code></pre>
+<p>turns into</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span><span style="color:#fe8019">lambda</span> x: x
+</span></span></code></pre>
+<p>The lambda function is composed of 3 parts:
+- lambda keyword
+- bound variable: x   # An argument to a function
+- body: x</p>
+
+<p>As opposed to bound is a free variable - <em>scope</em>!</p>
+
+<h2>Save a lambda in a variable</h2>
+
+<p>addOne = lambda x: x + 1</p>
+
+<h2>You can have multiple arguments</h2>
+
+<p>fullName = lambda first, last: f&rsquo;{first.title()} {last.title()}&rsquo;</p>
+
+<h2>Higher order functions</h2>
+
+<p>Lambdas are often used with higher-order functions, which <em>take
+one or more functions as arguments or return one or more
+functions</em>.</p>
+
+<h2>Arguments</h2>
+
+<p>(lambda x,y,z: x+y+z)(1,2,3)</p>
+
+<h3>You can set default values</h3>
+
+<p>(lambda x,y,z=3: x+y+z)(1,2)</p>
+
+<h3>Pass a bunch of args in</h3>
+
+<p><code>(lambda *args: sum(args))(1,2,3)</code></p>
+
+<h3>Pass in a bunch of kwargs</h3>
+
+<p><code>(lambda **kwargs: sum(kwargs.values()))(one=1, two=2, three=3)</code></p>
+
+<h2>Closure!</h2>
+
+<h2>Common Uses</h2>
+
+<p>Used with built-in functions
+- map()
+- filter()
+- functools.reduce()</p>
+
+<p><strong>Key Functions</strong>
+Key functions are <em>higher order functions</em> that take a parameter
+key as a named argument.
+- sort()
+- sorted(), min(), max()
+- nlargest() and nsmallest(): <strong>in the heapq module</strong></p>
+
+<p>Sorting
+ids = [&lsquo;id1&rsquo;, &lsquo;id2&rsquo;, &lsquo;id30&rsquo;, &lsquo;id3&rsquo;, &lsquo;id22&rsquo;, &lsquo;id100&rsquo;]
+sorted(ids)) # Lexicographic sort
+sortedIds = sorted(ids, key=lambda x: int(x[2:])) # Integer sort</p>
+
+<p><strong><em>I don&rsquo;t really know how sort works</em></strong></p>
+
+<p><a href="./python-sorting.md">Sorting</a></p>
+
+        </div>
+    </article>
+
+    
+    <div class="mt-16 p-4">
+        <div class="container mx-auto flex flex-col md:flex-row md:justify-between">
+            
+            <div>
+                <p>© 2024 Nathan Kawaller</p>
+                <p>All code <a href=" https://raw.githubusercontent.com/git/git-scm.com/main/MIT-LICENSE.txt">MIT
+                        licensed</a></p>
+                
+            </div>
+
+            
+            <div>
+                
+                <p><a href="https://www.instagram.com/vscode.shortcuts/?hl=en">Instagram</a></p>
+                <a href="https://www.linkedin.com/in/nkawaller/">LinkedIn</a>
+            </div>
+
+            
+            <div>
+                
+                <p>
+                    Washington D.C. <span id='current-time'><span>
+                </p>
+                <p><a href="https://magazine-b.com/">한국어</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    
+    function updateTime() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+
+        
+        minutes = (minutes < 10 ? '0' : '') + minutes;
+        seconds = (seconds < 10 ? '0' : '') + seconds;
+
+        var formattedTime = hours + ":" + minutes + ":" + seconds;
+        document.getElementById("current-time").textContent = formattedTime;
+    }
+
+    
+    setInterval(updateTime, 1000);
+
+    
+    updateTime();
+</script>
+
+</html>
