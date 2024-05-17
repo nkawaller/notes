@@ -105,7 +105,7 @@ func GenerateMarkdownContent(files []string, fs FileSystem) string {
 
 	// Append file links
 	for _, file := range files {
-		link := fmt.Sprintf("[%s]: %s\n", strings.TrimSuffix(file, ".md"), strings.TrimSuffix(file, ".md"))
+		link := fmt.Sprintf("[%s]: %s\n", strings.TrimSuffix(file, ".md"), strings.TrimSuffix(file, ".md") + ".html")
 		content.WriteString(link)
 	}
 
