@@ -1,12 +1,21 @@
-# Notes - static site generator [![tests](https://github.com/nkawaller/notes/actions/workflows/01-test.yml/badge.svg)](https://github.com/nkawaller/notes/actions/workflows/01-test.yml) [![build](https://github.com/nkawaller/notes/actions/workflows/02-build-site.yml/badge.svg?branch=main)](https://github.com/nkawaller/notes/actions/workflows/02-build-site.yml)
+# Notes - static site generator
+
+[![tests](https://github.com/nkawaller/notes/actions/workflows/test.yml/badge.svg)](https://github.com/nkawaller/notes/actions/workflows/test.yml)
+[![deploy](https://github.com/nkawaller/notes/actions/workflows/deploy.yml/badge.svg)](https://github.com/nkawaller/notes/actions/workflows/deploy.yml)
+
+Welcome to the Notes project——a dynamic tool for generating static sites
+with ease and efficiency. Harnessing the power of Go, this project not
+only facilitates static site generation but also provides a live server
+for instant feedback during development.
 
 ## Development
 
 ### Live Server
 
-In addition to being a static-site generator, there's also a live
-server you can run to get instant feedback while you develop. To set
-this up, start the tailwind listener:
+Apart from its primary function as a static-site generator, Notes also
+offers a live server feature to enhance your development experience. 
+Running the server involves two steps——first start the tailwind 
+listener:
 
 ```
 ./runtailwind.sh
@@ -18,11 +27,15 @@ and then start the server:
 ./bin/runserver
 ```
 
-### Compile Binaries and Build Static Site
+### Compile Binaries
 
-Run the following command to generate the static site, and copy the css 
-file over to the `deploy/static` directory. The runserver and staticgen
-binaries are also created when running this command.
+
+
+### Build Static Site
+
+Execute the following command to generate the static site, and transfer
+the CSS file to the `deploy/static` directory. This command also creates
+the `runserver` and `staticgen` binaries:
 
 ```
 go run buildSite.go
@@ -30,7 +43,7 @@ go run buildSite.go
 
 ### Test
 
-From the root directory run all tests with:
+To run all tests from the root directory, utilize the following command.
 
 ```
 go test ./...
