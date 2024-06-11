@@ -1,49 +1,15 @@
-# Sample Page
 
-Here's a sample markdown page - the bytes in the file have a length of 389
+# Notebook
 
-> Editing on April 23, 2024
+  Welcome to my website. It's a digital garden, which is a bit different
+  from the conventional blog format. Here, instead of polished articles
+  or a structured index you'll discover a living collection of evolving
+  ideas and early-stage explorations. This space serves as a personal
+  thinking environment, fostering the ongoing development and refinement
+  of concepts.
 
-Here's a code block about struct embedding
-
-```
-package main
-
-import "fmt"
-
-type base struct {
-    num int
-}
-
-func (b base) describe() string {
-    return fmt.Sprintf("base with num=%v", b.num)
-}
-
-type container struct {
-    base
-    str string
-}
-
-func main() {
-
-    co := container{
-        base: base{
-            num: 1,
-        },
-        str: "some name",
-    }
-
-    fmt.Printf("co={num: %v, str: %v}\n", co.num, co.str)
-
-    fmt.Println("also num:", co.base.num)
-
-    fmt.Println("describe:", co.describe())
-
-    type describer interface {
-        describe() string
-    }
-
-    var d describer = co
-    fmt.Println("describer:", d.describe())
-}
-```
+  Without traditional navigation aids, this site encourages unstructured
+  exploration. You're invited to stumble upon insights in their raw,
+  formative stages. This dynamic environment represents a continuous
+  journey of learning and intellectual growth, where ideas are 
+  revisited, rethought, and expanded over time.
