@@ -1,4 +1,4 @@
-<!-- base_template.html -->
+
 <!doctype html>
 <html lang="en">
 
@@ -9,20 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="{{ .CSSPath }}" />
-    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="./static/output.css" />
+    <title>Markdown Blog</title>
 </head>
 
 <body class="flex min-h-screen flex-col text-base font-medium text-zinc-900 md:text-lg">
-    <!-- Navbar -->
+    
     <div class="p-4">
         <div class="container mx-auto flex items-center justify-between">
-            <!-- Float "AREA 17" to the left -->
+            
             <div class="float-left">
                 <a href="/" class="text-8xl">N</a>
             </div>
 
-            <!-- Float the other links to the right -->
+            
             <div class="float-right">
                 <a href="https://github.com/nkawaller" class="ml-4">Open Source</a>
                 <a href="/root.html" class="ml-4">Notes</a>
@@ -31,40 +31,50 @@
         </div>
     </div>
 
-    <!-- Article -->
+    
     <article class="prose prose-zinc prose-base md:prose-lg prose-headings:font-semibold mx-auto mt-16 flex-1 p-4">
-        <!-- Display the last modified date in the body -->
+        
         <div>
             <aside class="mb-3.5">
                 <span class="text-xs text-zinc-500">
-                    Last updated {{.LastModified.Format "2006-01-02"}}
+                    Last updated 2024-06-22
                 </span>
             </aside>
-            {{.HTML}}
+            <h1>Korean Notes</h1>
+
+<p>Welcome to the section of my site dedicated to learning the Korean
+  language, grammar, vocabulary, and culture. While this section is
+  mostly separate from the rest of my notes, which focus on programming
+  and computer science, it will be interesting to see what connections
+  develop over time. By continuously revisiting and refining these
+  notes, this practice not only documents my progress in Korean language
+  study but also reinforces prior knowledge, fostering deeper
+  understanding as diverse areas potentially intersect.</p>
+
         </div>
     </article>
 
-    <!-- Footer section -->
+    
     <div class="mt-16 p-4">
         <div class="container mx-auto flex flex-col md:flex-row md:justify-between">
-            <!-- Left content in the footer -->
+            
             <div>
                 <p>© 2024 Nathan Kawaller</p>
                 <p>All code <a href=" https://raw.githubusercontent.com/git/git-scm.com/main/MIT-LICENSE.txt">MIT
                         licensed</a></p>
-                <!-- <p>Version française</p> -->
+                
             </div>
 
-            <!-- Center content in the footer -->
+            
             <div>
-                <!-- <p>Subscribe to our newsletter</p> -->
+                
                 <p><a href="https://www.instagram.com/vscode.shortcuts/?hl=en">Instagram</a></p>
                 <a href="https://www.linkedin.com/in/nkawaller/">LinkedIn</a>
             </div>
 
-            <!-- Right content in the footer -->
+            
             <div>
-                <!-- <p>2003—2024 archives</p> -->
+                
                 <p>
                     Washington D.C. <span id='current-time'><span>
                 </p>
@@ -75,14 +85,14 @@
 </body>
 
 <script>
-    // Function to update the time
+    
     function updateTime() {
         var currentTime = new Date();
         var hours = currentTime.getHours();
         var minutes = currentTime.getMinutes();
         var seconds = currentTime.getSeconds();
 
-        // Add leading zeros if minutes or seconds are single digit
+        
         minutes = (minutes < 10 ? '0' : '') + minutes;
         seconds = (seconds < 10 ? '0' : '') + seconds;
 
@@ -90,10 +100,10 @@
         document.getElementById("current-time").textContent = formattedTime;
     }
 
-    // Update time every second
+    
     setInterval(updateTime, 1000);
 
-    // Initial call to display time immediately
+    
     updateTime();
 </script>
 
