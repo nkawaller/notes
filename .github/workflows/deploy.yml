@@ -24,3 +24,21 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Get list of changed files
+        id: changed_files
+        run: |
+          git fetch origin main
+          git diff --name-only HEAD^ HEAD > changed_files.txt
+          cat changed_files.txt
+
+      - name: Create CloudFront invalidation for changed files
+        if: success() && steps.changed_files.outputs.changes != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        run: |
+          invalidation_paths=$(sed 's/^/\/&/' changed_files.txt | tr '\n' ' ')
+          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths $invalidation_paths
+
