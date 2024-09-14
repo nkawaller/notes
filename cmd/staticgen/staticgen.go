@@ -105,7 +105,7 @@ func (s *StaticSiteGenerator) processMarkdownFile(file fs.DirEntry, tmpl *templa
 		lastModified := fileInfo.ModTime()
 
 		page := page.Page{
-			Title:        "Markdown Blog",
+			Title:        "Nathan Kawaller",
 			HTML:         template.HTML(html),
 			LastModified: lastModified,
 			CSSPath:      "./static/output.css",
