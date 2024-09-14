@@ -13,6 +13,7 @@ func main() {
 
 	executeBinary("./bin/staticgen")
 	copyStaticFile("./web/static/output.css", "./deploy/static/output.css")
+	copyStaticFile("./web/static/N.jpg", "./deploy/static/N.jpg")
 
 }
 

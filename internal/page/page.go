@@ -10,4 +10,5 @@ type Page struct {
 	HTML         template.HTML
 	LastModified time.Time
 	CSSPath      string
+	ICONPath      string
 }

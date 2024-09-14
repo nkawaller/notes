@@ -109,6 +109,7 @@ func (s *StaticSiteGenerator) processMarkdownFile(file fs.DirEntry, tmpl *templa
 			HTML:         template.HTML(html),
 			LastModified: lastModified,
 			CSSPath:      "./static/output.css",
+			ICONPath:      "./static/N.jpg",
 		}
 
 		outputPath := filepath.Join("deploy", strings.TrimSuffix(path, ".md")+".html")
