@@ -127,12 +127,17 @@
 
 ## 가끔은 내 책 위에 엎드려 잠을 자요
 
-  - **가끔은 (sometimes):** "가끔" means "sometimes," and "은" is a topic particle adding emphasis, meaning "as for sometimes."
+  - **가끔은 (sometimes):** "가끔" means "sometimes," and "은" is a 
+    topic particle adding emphasis, meaning "as for sometimes."
   - **내 (my):** Informal possessive form of "I."
-  - **책 위에 (on top of my book):** "책" means "book," "위" means "on top," and "에" is a location particle indicating where something is.
-  - **엎드려 (lies down):** "엎드리다" means "to lie down (face down)," and "엎드려" is the verb's connective form.
-  - **잠을 (sleep):** "잠" means "sleep," and "을" is an object particle.
-  - **자요 (sleeps):** The present tense polite form of "자다," meaning "to sleep."
+  - **책 위에 (on top of my book):** "책" means "book," "위" means "on 
+    top," and "에" is a location particle indicating where something is.
+  - **엎드려 (lies down):** "엎드리다" means "to lie down (face down)," 
+    and "엎드려" is the verb's connective form.
+  - **잠을 (sleep):** "잠" means "sleep," and "을" is an object 
+    particle.
+  - **자요 (sleeps):** The present tense polite form of "자다," meaning 
+    "to sleep."
 
   > Sometimes, (Meru) lies down and sleeps on top of my book.
 
@@ -140,23 +145,38 @@
 ## 그러면 머루가 일어날 때까지 기다리지요
 
   - **그러면 (then):** A conjunction meaning "then" or "in that case."
-  - **머루가 (Meru):** "머루" is the name (Meru), and "가" is a subject particle.
-  - **일어날 (gets up):** "일어나다" means "to get up" or "to wake up," and "일어날" is the future or potential form.
-  - **때까지 (until):** "때" means "time," and "까지" means "until," forming the phrase "until the time."
-  - **기다리지요 (wait):** "기다리다" means "to wait," and "지요" (often shortened to "죠") is an ending that can suggest shared understanding, gentle suggestion, or intention. Here, it implies "I wait" or "one waits."
+  - **머루가 (Meru):** "머루" is the name (Meru), and "가" is a subject 
+    particle.
+  - **일어날 (gets up):** "일어나다" means "to get up" or "to wake up," 
+    and "일어날" is the future or potential form.
+  - **때까지 (until):** "때" means "time," and "까지" means "until," 
+    forming the phrase "until the time."
+  - **기다리지요 (wait):** "기다리다" means "to wait," and "지요" (often 
+    shortened to "죠") is an ending that can suggest shared 
+    understanding, gentle suggestion, or intention. Here, it implies "I 
+    wait" or "one waits."
 
   > Then, I wait until Meru gets up."
 
 
 ## 머루는 말을 하지 않기 때문에 기분을 알고 싶을 때는 잘 지켜봐야 해요
 
-  - **머루는 (Meru):** "머루" is the name (Meru), and "는" is a topic particle indicating that Meru is the subject of the sentence.
-  - **말을 (words):** "말" means "words" or "speech," and "을" is an object particle.
-  - **하지 않기 때문에 (because [she] doesn't speak):** "하지 않다" means "to not do," and "기 때문에" means "because," forming the phrase "because [she] doesn't speak."
-  - **기분을 (mood):** "기분" means "mood" or "feelings," and "을" is an object particle.
-  - **알고 싶을 때는 (when I want to know):** "알다" means "to know," "고 싶다" means "to want to," and "때" means "time." "때는" is used to indicate "when," forming "when I want to know."
+  - **머루는 (Meru):** "머루" is the name (Meru), and "는" is a topic 
+    particle indicating that Meru is the subject of the sentence.
+  - **말을 (words):** "말" means "words" or "speech," and "을" is an 
+    object particle.
+  - **하지 않기 때문에 (because [she] doesn't speak):** "하지 않다" 
+    means "to not do," and "기 때문에" means "because," forming the 
+    phrase "because [she] doesn't speak."
+  - **기분을 (mood):** "기분" means "mood" or "feelings," and "을" is an 
+    object particle.
+  - **알고 싶을 때는 (when I want to know):** "알다" means "to know," 
+    "고 싶다" means "to want to," and "때" means "time." "때는" is used 
+    to indicate "when," forming "when I want to know."
   - **잘 (well):** An adverb meaning "well" or "carefully."
-  - **지켜봐야 해요 (have to observe):** "지켜보다" means "to observe" or "to watch carefully," and "야 해요" is a form meaning "have to" or "must."
+  - **지켜봐야 해요 (have to observe):** "지켜보다" means "to observe" 
+    or "to watch carefully," and "야 해요" is a form meaning "have to" 
+    or "must."
   
   > Because Meru doesn't speak, when you want to know her mood, you have 
   > to observe her carefully.
@@ -164,14 +184,22 @@
 
 ## 머루를 부드럽게 쓰다듬으면 ‘그르릉 그르릉’ 보통 기분 좋을 때 이런 소리를 내요
 
-  - **머루를 (Meru):** "머루" is the name (Meru), and "를" is an object particle indicating that Meru is the object of the verb.
+  - **머루를 (Meru):** "머루" is the name (Meru), and "를" is an object 
+    particle indicating that Meru is the object of the verb.
   - **부드럽게 (gently):** An adverb meaning "gently" or "softly."
-  - **쓰다듬으면 (if you pet):** "쓰다듬다" means "to pet" or "to stroke," and "으면" is a conditional ending meaning "if." Together, "쓰다듬으면" means "if you pet."
-  - **‘그르릉 그르릉’ (‘grr grr’):** Onomatopoeia for a cat's purring sound.
+  - **쓰다듬으면 (if you pet):** "쓰다듬다" means "to pet" or "to 
+    stroke," and "으면" is a conditional ending meaning "if." Together, 
+    "쓰다듬으면" means "if you pet."
+  - **‘그르릉 그르릉’ (‘grr grr’):** Onomatopoeia for a cat's purring 
+    sound.
   - **보통 (usually):** An adverb meaning "usually" or "normally."
-  - **기분 좋을 때 (when [she is] in a good mood):** "기분" means "mood," "좋다" means "to be good," and "때" means "when" or "time." Together, it means "when (she is) in a good mood."
-  - **이런 소리를 (this kind of sound):** "이런" means "this kind of," "소리" means "sound," and "를" is an object particle.
-  - **내요 (makes):** "내다" means "to make" (a sound), and "요" is the informal polite ending.
+  - **기분 좋을 때 (when [she is] in a good mood):** "기분" means 
+    "mood," "좋다" means "to be good," and "때" means "when" or "time." 
+    Together, it means "when (she is) in a good mood."
+  - **이런 소리를 (this kind of sound):** "이런" means "this kind of," 
+    "소리" means "sound," and "를" is an object particle.
+  - **내요 (makes):** "내다" means "to make" (a sound), and "요" is the 
+    informal polite ending.
   
   > If you pet Meru gently, she goes ‘grr grr.’ She usually makes this 
   > sound when she's in a good mood.
@@ -179,14 +207,24 @@
 
 ## 깜짝 놀라거나 무서울 때면 몸을 움츠리고 ‘하악’ 소리를 내고요
 
-  - **깜짝 (suddenly):** An adverb used to express surprise or being startled.
-  - **놀라거나 (get surprised or):** "놀라다" means "to be surprised," and "거나" is a connective meaning "or."
-  - **무서울 때면 (when [she is] scared):** "무섭다" means "to be scared," "때" means "time" or "when," and "면" is a conditional particle meaning "if" or "when." Together, "무서울 때면" means "when (she is) scared."
+  - **깜짝 (suddenly):** An adverb used to express surprise or being 
+    startled.
+  - **놀라거나 (get surprised or):** "놀라다" means "to be surprised," 
+    and "거나" is a connective meaning "or."
+  - **무서울 때면 (when [she is] scared):** "무섭다" means "to be 
+    scared," "때" means "time" or "when," and "면" is a conditional 
+    particle meaning "if" or "when." Together, "무서울 때면" means "when 
+    (she is) scared."
   - **몸을 (body):** "몸" means "body," and "을" is an object particle.
-  - **움츠리고 (curls up):** "움츠리다" means "to curl up" or "to shrink," and "고" is a connective ending meaning "and."
-  - **‘하악’ (hiss):** Onomatopoeia representing a cat's hissing sound when frightened.
-  - **소리를 (sound):** "소리" means "sound," and "를" is an object particle.
-  - **내고요 (makes):** "내다" means "to make" (a sound), and "고요" is a connective ending that softens the sentence, often used to add additional information.
+  - **움츠리고 (curls up):** "움츠리다" means "to curl up" or "to 
+    shrink," and "고" is a connective ending meaning "and."
+  - **‘하악’ (hiss):** Onomatopoeia representing a cat's hissing sound 
+    when frightened.
+  - **소리를 (sound):** "소리" means "sound," and "를" is an object 
+    particle.
+  - **내고요 (makes):** "내다" means "to make" (a sound), and "고요" is 
+    a connective ending that softens the sentence, often used to add 
+    additional information.
   
   > When she is startled or scared, she curls up her body and makes a 
   > ‘hiss’ sound.
@@ -194,14 +232,23 @@
 
 ## 밥그릇이 비어 있거나 문이 닫혀 있으면 “야옹” 하면서 나를 부른답니다
 
-  - **밥그릇이 (food bowl):** "밥그릇" means "food bowl," and "이" is a subject particle indicating that the food bowl is the subject.
-  - **비어 있거나 (is empty or):** "비다" means "to be empty," and "있다" means "to be (in a state)." Combined, "비어 있다" means "to be empty," and "거나" is a connective meaning "or."
+  - **밥그릇이 (food bowl):** "밥그릇" means "food bowl," and "이" is a 
+    subject particle indicating that the food bowl is the subject.
+  - **비어 있거나 (is empty or):** "비다" means "to be empty," and 
+    "있다" means "to be (in a state)." Combined, "비어 있다" means "to 
+    be empty," and "거나" is a connective meaning "or."
   - **문이 (door):** "문" means "door," and "이" is a subject particle.
-  - **닫혀 있으면 (is closed):** "닫히다" is the passive form of "닫다" (to close), meaning "to be closed." "있으면" combines "있다" (to be in a state) and "면" (if/when), forming "if/when it is closed."
+  - **닫혀 있으면 (is closed):** "닫히다" is the passive form of "닫다" 
+    (to close), meaning "to be closed." "있으면" combines "있다" (to be 
+    in a state) and "면" (if/when), forming "if/when it is closed."
   - **“야옹” (meow):** Onomatopoeia for a cat's meow sound.
-  - **하면서 (while doing):** "하다" means "to do," and "면서" is a connective ending meaning "while."
-  - **나를 (me):** "나" means "I" or "me," and "를" is an object particle.
-  - **부른답니다 (calls):** "부르다" means "to call," and "답니다" is an informal polite ending that conveys hearsay or that the speaker is explaining something known from experience.
+  - **하면서 (while doing):** "하다" means "to do," and "면서" is a 
+    connective ending meaning "while."
+  - **나를 (me):** "나" means "I" or "me," and "를" is an object 
+    particle.
+  - **부른답니다 (calls):** "부르다" means "to call," and "답니다" is an 
+    informal polite ending that conveys hearsay or that the speaker is 
+    explaining something known from experience.
   
   > If the food bowl is empty or the door is closed, she calls me with a 
   > 'meow.'
@@ -209,16 +256,26 @@
 
 ## 머루의 머리를 긁어 털을 부드럽게 쓰다듬어 준다면 누구든지 머루랑 친구가 될 수 있을 거예요
 
-  - **머루의 (Meru's):** "머루" is the name (Meru), and "의" is a possessive particle meaning "of" or "'s."
-  - **머리를 (head):** "머리" means "head," and "를" is an object particle indicating that "head" is the object of the verb.
-  - **긁어 (scratch):** "긁다" means "to scratch," and "어" is a connective form meaning "and."
+  - **머루의 (Meru's):** "머루" is the name (Meru), and "의" is a 
+    possessive particle meaning "of" or "'s."
+  - **머리를 (head):** "머리" means "head," and "를" is an object 
+    particle indicating that "head" is the object of the verb.
+  - **긁어 (scratch):** "긁다" means "to scratch," and "어" is a 
+    connective form meaning "and."
   - **털을 (fur):** "털" means "fur," and "을" is an object particle.
   - **부드럽게 (gently):** An adverb meaning "gently" or "softly."
-  - **쓰다듬어 준다면 (if you stroke):** "쓰다듬다" means "to stroke" or "to pet," "주다" means "to give" or "to do something for someone," and "다면" is a conditional ending meaning "if." Together, "쓰다듬어 준다면" means "if you stroke (gently for someone)."
+  - **쓰다듬어 준다면 (if you stroke):** "쓰다듬다" means "to stroke" or 
+    "to pet," "주다" means "to give" or "to do something for someone," 
+    and "다면" is a conditional ending meaning "if." Together, 
+    "쓰다듬어 준다면" means "if you stroke (gently for someone)."
   - **누구든지 (anyone):** Means "anyone" or "whoever."
-  - **머루랑 (with Meru):** "머루" is the name (Meru), and "랑" is a colloquial form of "와" or "과," meaning "with."
-  - **친구가 (friend):** "친구" means "friend," and "가" is a subject particle.
-  - **될 수 있을 거예요 (will be able to become):** "되다" means "to become," "수 있다" means "can" or "be able to," and "을 거예요" is a future tense ending indicating a high probability.
+  - **머루랑 (with Meru):** "머루" is the name (Meru), and "랑" is a 
+    colloquial form of "와" or "과," meaning "with."
+  - **친구가 (friend):** "친구" means "friend," and "가" is a subject 
+    particle.
+  - **될 수 있을 거예요 (will be able to become):** "되다" means "to 
+    become," "수 있다" means "can" or "be able to," and "을 거예요" is a 
+    future tense ending indicating a high probability.
   
   > If you scratch Meru's head and gently stroke her fur, anyone can 
   > become friends with her.
