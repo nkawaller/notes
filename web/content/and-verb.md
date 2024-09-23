@@ -46,7 +46,7 @@
     school **and** stayed home to rest.)
 
 
-## **고** vs **하고** 
+## 고 vs 하고 
   
   Both **고** and **하고** can mean "and," but they have different
   usages based on the context and what they are connecting.
