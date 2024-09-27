@@ -28,38 +28,45 @@
 ## Get an Overview of the Data
    
    Use methods to quickly assess the structure:
+   
    **First few rows**:
-     ```python
-     df.head()  # View first 5 rows
-     df.tail()  # View last 5 rows
-     ```
+   ```python
+   df.head()  # View first 5 rows
+   df.tail()  # View last 5 rows
+   ```
    **Summary of data types and non-null counts**:
-     ```python
-     df.info()
-     ```
+   ```python
+   df.info()
+   ```
    **Column names**:
-     ```python
-     df.columns
-     ```
+   ```python
+   df.columns
+   ```
    **Number of rows and columns**:
-     ```python
-     df.shape
-     ```
+   ```python
+   df.shape
+   ```
 
 ## Check for Missing Data
 
    Missing data can affect analysis and model performance:
    ```python
-   df.isnull().sum()  # Count missing values per column
-   df.isnull().mean()  # Percentage of missing values per column
+   # Count missing values per column
+   df.isnull().sum()
+   
+   # Percentage of missing values per column
+   df.isnull().mean()  
    ```
 
 ## Look at Descriptive Statistics
    
    Get an overall sense of the data’s distribution:
    ```python
-   df.describe()  # Summary statistics for numeric columns
-   df.describe(include='all')  # Summary for all columns, including categorical
+   # Summary statistics for numeric columns
+   df.describe()
+   
+   # Summary for all columns, including categorical
+   df.describe(include='all')
    ```
 
 ## Examine Data Types
@@ -71,15 +78,19 @@
    If you notice inconsistencies (e.g., a column with numbers stored as 
    strings), you might want to convert them:
    ```python
-   df['column'] = pd.to_numeric(df['column'], errors='coerce')  # Convert to numeric, with errors set to NaN
+   # Convert to numeric, with errors set to NaN
+   df['column'] = pd.to_numeric(df['column'], errors='coerce')
    ```
 
 ## Handle Duplicates
 
    Check for any duplicate rows that may need to be removed:
    ```python
-   df.duplicated().sum()  # Number of duplicate rows
-   df.drop_duplicates(inplace=True)  # Remove duplicates
+   # Number of duplicate rows
+   df.duplicated().sum()
+   
+   # Remove duplicates
+   df.drop_duplicates(inplace=True)
    ```
 
 ## Examine Unique Values in Categorical Columns
@@ -87,8 +98,11 @@
    For categorical data, check the number of unique values and their 
    distribution:
    ```python
-   df['column'].value_counts()  # Distribution of values
-   df['column'].nunique()  # Number of unique values
+   # Distribution of values
+   df['column'].value_counts()
+   
+   # Number of unique values
+   df['column'].nunique()
    ```
 
 ## Check for Outliers
@@ -111,25 +125,28 @@
 ## Visualize the Data
 
    Simple plots can give you insights into patterns:
+   
    **Histograms for distributions**:
-     ```python
-     df['numeric_column'].hist()
-     plt.show()
-     ```
+   ```python
+   df['numeric_column'].hist()
+   plt.show()
+   ```
    **Bar charts for categorical data**:
-     ```python
-     df['categorical_column'].value_counts().plot(kind='bar')
-     plt.show()
-     ```
+   ```python
+   df['categorical_column'].value_counts().plot(kind='bar')
+   plt.show()
+   ```
 
 ## Memory Usage
 
    For large datasets, monitor memory usage to avoid crashes:
    ```python
-   df.memory_usage(deep=True).sum()  # Total memory usage in bytes
+   # Total memory usage in bytes
+   df.memory_usage(deep=True).sum()
    ```
    Consider optimizing memory by converting data types (e.g., converting 
    large integer columns to smaller types):
    ```python
-   df['column'] = df['column'].astype('int32')  # Convert to a smaller int type
+   # Convert to a smaller int type
+   df['column'] = df['column'].astype('int32')
    ```
