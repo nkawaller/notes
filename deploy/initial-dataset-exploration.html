@@ -107,6 +107,10 @@
 <pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Convert to numeric, with errors set to NaN</span>
 </span></span><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">=</span> pd<span style="color:#fe8019">.</span>to_numeric(df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>], errors<span style="color:#fe8019">=</span><span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">coerce</span><span style="color:#b8bb26">&#39;</span>)
 </span></span></code></pre>
+<p>Convert the data type in one column to another type (a 64-bit integer
+   in this case):</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">=</span> df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>astype(<span style="color:#fabd2f">int</span>)
+</span></span></code></pre>
 <h2>Handle Duplicates</h2>
 
 <p>Check for any duplicate rows that may need to be removed:</p>

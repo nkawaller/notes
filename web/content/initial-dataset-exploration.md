@@ -82,6 +82,12 @@
    df['column'] = pd.to_numeric(df['column'], errors='coerce')
    ```
 
+   Convert the data type in one column to another type (a 64-bit integer
+   in this case):
+   ```python
+   df['column'] = df['column'].astype(int)
+   ```
+
 ## Handle Duplicates
 
    Check for any duplicate rows that may need to be removed:
