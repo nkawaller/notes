@@ -28,20 +28,20 @@
 ## Get an Overview of the Data
    
    Use methods to quickly assess the structure:
-   - **First few rows**:
+   **First few rows**:
      ```python
      df.head()  # View first 5 rows
      df.tail()  # View last 5 rows
      ```
-   - **Summary of data types and non-null counts**:
+   **Summary of data types and non-null counts**:
      ```python
      df.info()
      ```
-   - **Column names**:
+   **Column names**:
      ```python
      df.columns
      ```
-   - **Number of rows and columns**:
+   **Number of rows and columns**:
      ```python
      df.shape
      ```
@@ -111,12 +111,12 @@
 ## Visualize the Data
 
    Simple plots can give you insights into patterns:
-   - **Histograms for distributions**:
+   **Histograms for distributions**:
      ```python
      df['numeric_column'].hist()
      plt.show()
      ```
-   - **Bar charts for categorical data**:
+   **Bar charts for categorical data**:
      ```python
      df['categorical_column'].value_counts().plot(kind='bar')
      plt.show()

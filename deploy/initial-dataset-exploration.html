@@ -65,20 +65,20 @@
 <h2>Get an Overview of the Data</h2>
 
 <p>Use methods to quickly assess the structure:
-   - <strong>First few rows</strong>:
+   <strong>First few rows</strong>:
      <code>python
      df.head()  # View first 5 rows
      df.tail()  # View last 5 rows
 </code>
-   - <strong>Summary of data types and non-null counts</strong>:
+   <strong>Summary of data types and non-null counts</strong>:
      <code>python
      df.info()
 </code>
-   - <strong>Column names</strong>:
+   <strong>Column names</strong>:
      <code>python
      df.columns
 </code>
-   - <strong>Number of rows and columns</strong>:
+   <strong>Number of rows and columns</strong>:
      <code>python
      df.shape
 </code></p>
@@ -133,12 +133,12 @@
 <h2>Visualize the Data</h2>
 
 <p>Simple plots can give you insights into patterns:
-   - <strong>Histograms for distributions</strong>:
+   <strong>Histograms for distributions</strong>:
      <code>python
      df['numeric_column'].hist()
      plt.show()
 </code>
-   - <strong>Bar charts for categorical data</strong>:
+   <strong>Bar charts for categorical data</strong>:
      <code>python
      df['categorical_column'].value_counts().plot(kind='bar')
      plt.show()
