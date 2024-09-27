@@ -1,0 +1,212 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./static/output.css" />
+    <link rel="icon" type="image/jpg" href="./static/N.jpg">
+    <title>Nathan Kawaller</title>
+</head>
+
+<body class="flex min-h-screen flex-col text-base font-medium text-zinc-900 md:text-lg">
+    
+    <div class="p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            
+            <div class="float-left">
+                <a href="/" class="text-8xl">N</a>
+            </div>
+
+            
+            <div class="float-right">
+                <a href="https://github.com/nkawaller" class="ml-4">Open Source</a>
+                <a href="/root.html" class="ml-4">Notes</a>
+                <a href="#" class="ml-4">About</a>
+            </div>
+        </div>
+    </div>
+
+    
+    <article class="prose prose-zinc prose-base md:prose-lg prose-headings:font-semibold mx-auto mt-16 flex-1 p-4">
+        
+        <div>
+            <aside class="mb-3.5">
+                <span class="text-xs text-zinc-500">
+                    Last updated 2024-09-27
+                </span>
+            </aside>
+            <h1>Initial Dataset Exploration and Analysis</h1>
+
+<p>The following steps will give you a comprehensive understanding of the
+  dataset&rsquo;s structure, content, and potential issues befor diving into
+  deeper analysis or model-building.</p>
+
+<h2>Load the Data Efficiently</h2>
+
+<p>Load only a portion of the dataset first, especially if it&rsquo;s large,
+   to avoid overwhelming memory:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#fe8019">import</span> pandas <span style="color:#fe8019">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Load a sample of 100 rows</span>
+</span></span><span style="display:flex;"><span>   df <span style="color:#fe8019">=</span> pd<span style="color:#fe8019">.</span>read_csv(<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">your_file.csv</span><span style="color:#b8bb26">&#39;</span>, nrows<span style="color:#fe8019">=</span><span style="color:#d3869b">100</span>)
+</span></span></code></pre>
+<p>You can also load in chunks if the file is very large:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   chunk_size <span style="color:#fe8019">=</span> <span style="color:#d3869b">10000</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#fe8019">for</span> chunk <span style="color:#fe8019">in</span> pd<span style="color:#fe8019">.</span>read_csv(<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">your_file.csv</span><span style="color:#b8bb26">&#39;</span>, chunksize<span style="color:#fe8019">=</span>chunk_size):
+</span></span><span style="display:flex;"><span>       <span style="color:#928374;font-style:italic"># Process each chunk here</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#fe8019">pass</span>
+</span></span></code></pre>
+<h2>Get an Overview of the Data</h2>
+
+<p>Use methods to quickly assess the structure:
+   - <strong>First few rows</strong>:
+     <code>python
+     df.head()  # View first 5 rows
+     df.tail()  # View last 5 rows
+</code>
+   - <strong>Summary of data types and non-null counts</strong>:
+     <code>python
+     df.info()
+</code>
+   - <strong>Column names</strong>:
+     <code>python
+     df.columns
+</code>
+   - <strong>Number of rows and columns</strong>:
+     <code>python
+     df.shape
+</code></p>
+
+<h2>Check for Missing Data</h2>
+
+<p>Missing data can affect analysis and model performance:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>isnull()<span style="color:#fe8019">.</span>sum()  <span style="color:#928374;font-style:italic"># Count missing values per column</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>isnull()<span style="color:#fe8019">.</span>mean()  <span style="color:#928374;font-style:italic"># Percentage of missing values per column</span>
+</span></span></code></pre>
+<h2>Look at Descriptive Statistics</h2>
+
+<p>Get an overall sense of the data’s distribution:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>describe()  <span style="color:#928374;font-style:italic"># Summary statistics for numeric columns</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>describe(include<span style="color:#fe8019">=</span><span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">all</span><span style="color:#b8bb26">&#39;</span>)  <span style="color:#928374;font-style:italic"># Summary for all columns, including categorical</span>
+</span></span></code></pre>
+<h2>Examine Data Types</h2>
+
+<p>Ensure the data types (e.g., numeric, categorical) are correct:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>dtypes
+</span></span></code></pre>
+<p>If you notice inconsistencies (e.g., a column with numbers stored as
+   strings), you might want to convert them:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">=</span> pd<span style="color:#fe8019">.</span>to_numeric(df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>], errors<span style="color:#fe8019">=</span><span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">coerce</span><span style="color:#b8bb26">&#39;</span>)  <span style="color:#928374;font-style:italic"># Convert to numeric, with errors set to NaN</span>
+</span></span></code></pre>
+<h2>Handle Duplicates</h2>
+
+<p>Check for any duplicate rows that may need to be removed:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>duplicated()<span style="color:#fe8019">.</span>sum()  <span style="color:#928374;font-style:italic"># Number of duplicate rows</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>drop_duplicates(inplace<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)  <span style="color:#928374;font-style:italic"># Remove duplicates</span>
+</span></span></code></pre>
+<h2>Examine Unique Values in Categorical Columns</h2>
+
+<p>For categorical data, check the number of unique values and their
+   distribution:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>value_counts()  <span style="color:#928374;font-style:italic"># Distribution of values</span>
+</span></span><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>nunique()  <span style="color:#928374;font-style:italic"># Number of unique values</span>
+</span></span></code></pre>
+<h2>Check for Outliers</h2>
+
+<p>Use basic visualizations to check for outliers in numeric columns:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#fe8019">import</span> matplotlib.pyplot <span style="color:#fe8019">as</span> plt
+</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>boxplot(column<span style="color:#fe8019">=</span><span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">numeric_column</span><span style="color:#b8bb26">&#39;</span>)
+</span></span><span style="display:flex;"><span>   plt<span style="color:#fe8019">.</span>show()
+</span></span></code></pre>
+<h2>Inspect Data Relationships</h2>
+
+<p>Check correlations between numerical columns to identify potential
+   relationships:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>corr()
+</span></span></code></pre>
+<h2>Visualize the Data</h2>
+
+<p>Simple plots can give you insights into patterns:
+   - <strong>Histograms for distributions</strong>:
+     <code>python
+     df['numeric_column'].hist()
+     plt.show()
+</code>
+   - <strong>Bar charts for categorical data</strong>:
+     <code>python
+     df['categorical_column'].value_counts().plot(kind='bar')
+     plt.show()
+</code></p>
+
+<h2>Memory Usage</h2>
+
+<p>For large datasets, monitor memory usage to avoid crashes:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>memory_usage(deep<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)<span style="color:#fe8019">.</span>sum()  <span style="color:#928374;font-style:italic"># Total memory usage in bytes</span>
+</span></span></code></pre>
+<p>Consider optimizing memory by converting data types (e.g., converting
+   large integer columns to smaller types):</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">=</span> df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>astype(<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">int32</span><span style="color:#b8bb26">&#39;</span>)  <span style="color:#928374;font-style:italic"># Convert to a smaller int type</span>
+</span></span></code></pre>
+        </div>
+    </article>
+
+    
+    <div class="mt-16 p-4">
+        <div class="container mx-auto flex flex-col md:flex-row md:justify-between">
+            
+            <div>
+                <p>© 2024 Nathan Kawaller</p>
+                <p>All code <a href=" https://raw.githubusercontent.com/git/git-scm.com/main/MIT-LICENSE.txt">MIT
+                        licensed</a></p>
+                
+            </div>
+
+            
+            <div>
+                
+                <p><a href="https://www.instagram.com/vscode.shortcuts/?hl=en">Instagram</a></p>
+                <a href="https://www.linkedin.com/in/nkawaller/">LinkedIn</a>
+            </div>
+
+            
+            <div>
+                
+                <p>
+                    Washington D.C. <span id='current-time'><span>
+                </p>
+                <p><a href="/korean-root.html">한국어</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    
+    function updateTime() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+
+        
+        minutes = (minutes < 10 ? '0' : '') + minutes;
+        seconds = (seconds < 10 ? '0' : '') + seconds;
+
+        var formattedTime = hours + ":" + minutes + ":" + seconds;
+        document.getElementById("current-time").textContent = formattedTime;
+    }
+
+    
+    setInterval(updateTime, 1000);
+
+    
+    updateTime();
+</script>
+
+</html>
