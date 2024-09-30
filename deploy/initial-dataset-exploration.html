@@ -38,7 +38,7 @@
         <div>
             <aside class="mb-3.5">
                 <span class="text-xs text-zinc-500">
-                    Last updated 2024-09-27
+                    Last updated 2024-09-30
                 </span>
             </aside>
             <h1>Initial Dataset Exploration and Analysis</h1>
@@ -88,6 +88,13 @@
 </span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Percentage of missing values per column</span>
 </span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>isnull()<span style="color:#fe8019">.</span>mean()  
 </span></span></code></pre>
+<p>Remove rows with null values:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Remove all rows where any columns contain null values</span>
+</span></span><span style="display:flex;"><span>   df <span style="color:#fe8019">=</span> df<span style="color:#fe8019">.</span>dropna()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Drop rows with null values in a specific column</span>
+</span></span><span style="display:flex;"><span>   df <span style="color:#fe8019">=</span> df<span style="color:#fe8019">.</span>dropna(subset<span style="color:#fe8019">=</span>[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>])
+</span></span></code></pre>
 <h2>Look at Descriptive Statistics</h2>
 
 <p>Get an overall sense of the data’s distribution:</p>
@@ -129,6 +136,9 @@
 </span></span><span style="display:flex;"><span>   
 </span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Number of unique values</span>
 </span></span><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>nunique()
+</span></span></code></pre>
+<p>Count the number of occurrences of a certain value in a column:</p>
+<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   count <span style="color:#fe8019">=</span> (df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">==</span> <span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">value</span><span style="color:#b8bb26">&#39;</span>)<span style="color:#fe8019">.</span>sum()
 </span></span></code></pre>
 <h2>Check for Outliers</h2>
 

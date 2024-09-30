@@ -58,6 +58,15 @@
    df.isnull().mean()  
    ```
 
+   Remove rows with null values:
+   ```python
+   # Remove all rows where any columns contain null values
+   df = df.dropna()
+
+   # Drop rows with null values in a specific column
+   df = df.dropna(subset=['column'])
+   ```
+
 ## Look at Descriptive Statistics
    
    Get an overall sense of the data’s distribution:
@@ -109,6 +118,10 @@
    
    # Number of unique values
    df['column'].nunique()
+   ```
+   Count the number of occurrences of a certain value in a column:
+   ```python
+   count = (df['column'] == 'value').sum()
    ```
 
 ## Check for Outliers
