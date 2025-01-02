@@ -76,3 +76,12 @@
   > As she entered the classroom,
   > she greeted her friends.
   > "Hi, everyone!"
+
+  This story was sourced from the [두루책방 (Durubookbang)](http://xn--hu1b40go5ck8x.com/) app[^1].
+
+[^1]: **두루책방 (Durubookbang)**  
+      - **Producers**: Sooinn Lee (Executive Producer), Youtaeg Jeon, Eunpah Kim, and others.  
+      - **Affiliated Organizations**: Enuma, The Foundation SeeArt for Book Culture.  
+      - **Purpose**: Designed to support children's reading and writing, especially for multicultural and underprivileged families.  
+      - **Platform**: Digital library project.  
+
