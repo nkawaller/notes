@@ -38,80 +38,17 @@
         <div>
             <aside class="mb-3.5">
                 <span class="text-xs text-zinc-500">
-                    Last updated 2024-03-24
+                    Last updated 2025-01-16
                 </span>
             </aside>
-            <h1>Lambda Functions</h1>
+            <h1>따뜻한데, 너무 덥지는 않아요</h1>
 
-<p>Anonymous function.
-Pure, does not keep any state.</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span><span style="color:#fe8019">def</span> <span style="color:#fabd2f">identity</span>(x):
-</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">return</span> x
-</span></span></code></pre>
-<p>turns into</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span><span style="color:#fe8019">lambda</span> x: x
-</span></span></code></pre>
-<p>The lambda function is composed of 3 parts:
-- lambda keyword
-- bound variable: x   # An argument to a function
-- body: x</p>
+<h2>문장들</h2>
 
-<p>As opposed to bound is a free variable - <em>scope</em>!</p>
-
-<h2>Save a lambda in a variable</h2>
-
-<p>addOne = lambda x: x + 1</p>
-
-<h2>You can have multiple arguments</h2>
-
-<p>fullName = lambda first, last: f&rsquo;{first.title()} {last.title()}&rsquo;</p>
-
-<h2>Higher order functions</h2>
-
-<p>Lambdas are often used with higher-order functions, which <em>take
-one or more functions as arguments or return one or more
-functions</em>.</p>
-
-<h2>Arguments</h2>
-
-<p>(lambda x,y,z: x+y+z)(1,2,3)</p>
-
-<h3>You can set default values</h3>
-
-<p>(lambda x,y,z=3: x+y+z)(1,2)</p>
-
-<h3>Pass a bunch of args in</h3>
-
-<p><code>(lambda *args: sum(args))(1,2,3)</code></p>
-
-<h3>Pass in a bunch of kwargs</h3>
-
-<p><code>(lambda **kwargs: sum(kwargs.values()))(one=1, two=2, three=3)</code></p>
-
-<h2>Closure!</h2>
-
-<h2>Common Uses</h2>
-
-<p>Used with built-in functions
-- map()
-- filter()
-- functools.reduce()</p>
-
-<p><strong>Key Functions</strong>
-Key functions are <em>higher order functions</em> that take a parameter
-key as a named argument.
-- sort()
-- sorted(), min(), max()
-- nlargest() and nsmallest(): <strong>in the heapq module</strong></p>
-
-<p>Sorting
-ids = [&lsquo;id1&rsquo;, &lsquo;id2&rsquo;, &lsquo;id30&rsquo;, &lsquo;id3&rsquo;, &lsquo;id22&rsquo;, &lsquo;id100&rsquo;]
-sorted(ids)) # Lexicographic sort
-sortedIds = sorted(ids, key=lambda x: int(x[2:])) # Integer sort</p>
-
-<p><strong><em>I don&rsquo;t really know how sort works</em></strong></p>
-
-<p><a href="./python-sorting.md">Sorting</a></p>
+<ul>
+<li>오늘은 날씨가 따뜻한데, 너무 덥지는 않아요</li>
+<li>오늘은 날씨가 시원한데, 너무 춥지는 않아요</li>
+</ul>
 
         </div>
     </article>
