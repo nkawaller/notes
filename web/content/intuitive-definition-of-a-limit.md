@@ -1,8 +1,8 @@
 
 # Intuitive Definition of a Limit 
 
-  > e.g.: Approximating the slope of the tangent line
-  > e.g.: Approximating the derivative
+  > e.g. 'approximating the slope of the tangent line' or 'approximating 
+  > the derivative'
 
   Say you have a parabola, and you choose an arbitrary point on it 
   (let's use `P(1, 4)` as an example). If we wanted to find the slope of 
