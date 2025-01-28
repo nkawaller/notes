@@ -85,7 +85,7 @@ func GenerateMarkdownContent(files []string, fs FileSystem) string {
 
 	var content strings.Builder
 
-	content.WriteString("# All projects\n\n")
+	content.WriteString("# All notes\n\n")
 	content.WriteString("|      |                     |\n")
 	content.WriteString("|------|---------------------|\n")
 
