@@ -17,61 +17,59 @@ _Note: Similar values apply to negative angles and other quadrants._
 ---
 
 ## Logarithm Properties
+
 Make sure you recall the fundamental properties of logarithms.
 
-### **Basic Properties**
-1. **Definition of Logarithm**  
-   \[
-   \log_b(x) = y \quad \text{means} \quad b^y = x
-   \]
-   
-2. **Change of Base Formula**  
-   \[
-   \log_b(x) = \frac{\log_c(x)}{\log_c(b)}
-   \]
-   _(Common choice: \( c = 10 \) or \( c = e \))_
+### Basic Properties
 
-3. **Common Logarithms**  
-   - **Natural Log:** \( \ln x = \log_e(x) \)
-   - **Common Log:** \( \log x = \log_{10}(x) \)
+1. Definition of Logarithm:
+   ```
+   log_b(x) = y  means  b^y = x
+   ```
 
-### **Logarithm Rules**
-1. **Product Rule**  
-   \[
-   \log_b(xy) = \log_b(x) + \log_b(y)
-   \]
-   
-2. **Quotient Rule**  
-   \[
-   \log_b \left(\frac{x}{y}\right) = \log_b(x) - \log_b(y)
-   \]
-   
-3. **Power Rule**  
-   \[
-   \log_b(x^r) = r \log_b(x)
-   \]
+2. Change of Base Formula:
+   ```
+   log_b(x) = log_c(x) / log_c(b)
+   ```
+   (Common choice: c = 10 or c = e)
 
-4. **Log of 1**  
-   \[
-   \log_b(1) = 0
-   \]
+3. Common Logarithms:
+   - Natural Log: `ln(x) = log_e(x)`
+   - Common Log: `log(x) = log_10(x)`
 
-5. **Log of the Base**  
-   \[
-   \log_b(b) = 1
-   \]
+### Logarithm Rules
 
----
+1. Product Rule:
+   ```
+   log_b(xy) = log_b(x) + log_b(y)
+   ```
 
-### **Exponential & Logarithm Inverse Relationship**
-\[
-b^{\log_b(x)} = x
-\]
-\[
-\log_b(b^x) = x
-\]
+2. Quotient Rule:
+   ```
+   log_b(x / y) = log_b(x) - log_b(y)
+   ```
+
+3. Power Rule:
+   ```
+   log_b(x^r) = r * log_b(x)
+   ```
+
+4. Log of 1:
+   ```
+   log_b(1) = 0
+   ```
+
+5. Log of the Base:
+   ```
+   log_b(b) = 1
+   ```
 
 ---
 
-This cheatsheet should help you quickly recall key trigonometry and logarithm concepts. 🚀
+## Exponential & Logarithm Inverse Relationship
+
+  ```
+  b^(log_b(x)) = x
+  log_b(b^x) = x
+  ```
 
