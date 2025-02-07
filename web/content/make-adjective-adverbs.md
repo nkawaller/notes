@@ -20,7 +20,7 @@
 
 ## 문장들
 
-  - ~~그는~~[^1] 안전하게 운전했어요
+  - ~~그는~~ 안전하게 운전했어요[^1]
   - ~~그녀는~~ 행복하게 살고 있어요
   - 문제를 빠르게 풀었어요
   - 학생들이 조용하게 책을 읽고 있었어요
@@ -31,7 +31,7 @@
   - ~~그녀는~~ 슬프게 울었어요
 
 
-  [^1]: 그는and 그녀는are most often used in songs and poems—not
+  [^1]: 그는 and 그녀는 are most often used in songs and poems—not
         everyday speech. When you're having a conversation, either use a
         person's name, or just omit the pronoun.
        
