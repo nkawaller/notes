@@ -3,7 +3,6 @@ package utils
 import (
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 	"path/filepath"
 	"sort"
@@ -35,52 +34,41 @@ func ConvertMarkdownToHTML(content []byte) []byte {
 	)
 }
 
-func RenderPage(w http.ResponseWriter, html []byte, fs FileSystem, markdownFile string) {
-	page := CreatePage(html, fs, markdownFile)
-	ExecuteTemplate(w, fs, page)
+func RenderPage(w http.ResponseWriter, html []byte, fs FileSystem, markdownFile string) error {
+	p, err := CreatePage(html, fs, markdownFile)
+	if err != nil {
+		return err
+	}
+	return ExecuteTemplate(w, fs, p)
 }
 
-func CreatePage(html []byte, fs FileSystem, markdownFile string) page.Page {
-
-	// Get the file's last modified date
+func CreatePage(html []byte, fs FileSystem, markdownFile string) (page.Page, error) {
 	fileInfo, err := fs.Stat(markdownFile)
 	if err != nil {
-		log.Fatal(err)
+		return page.Page{}, err
 	}
-	lastModified := fileInfo.ModTime()
-
-	// Create a Page struct
-	page := page.Page{
+	p := page.Page{
 		Title:        "Note",
 		HTML:         template.HTML(html),
-		LastModified: lastModified,
+		LastModified: fileInfo.ModTime(),
 		CSSPath:      "../static/output.css",
 	}
-	return page
+	return p, nil
 }
 
-func ExecuteTemplate(w http.ResponseWriter, fs FileSystem, page page.Page) {
-
-	// Read the base template file
+func ExecuteTemplate(w http.ResponseWriter, fs FileSystem, page page.Page) error {
 	baseTemplate, err := fs.ReadFile(fs.GetTemplateLocation())
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
-
-	// Parse and execute the template
 	tmpl, err := template.New("base").Parse(string(baseTemplate))
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
-
-	err = tmpl.Execute(w, page)
-	if err != nil {
-		log.Fatal(err)
-	}
+	return tmpl.Execute(w, page)
 }
 
-func GenerateMarkdownContent(files []string, fs FileSystem) string {
-	// Sort files alphabetically
+func GenerateMarkdownContent(files []string, fs FileSystem) (string, error) {
 	sort.Strings(files)
 
 	var content strings.Builder
@@ -90,24 +78,21 @@ func GenerateMarkdownContent(files []string, fs FileSystem) string {
 	content.WriteString("|------|---------------------|\n")
 
 	for _, file := range files {
-		// Get file modification time
-		fileInfo, err := fs.Stat("web/content/" + file)
+		fileInfo, err := fs.Stat(filepath.Join(fs.GetContentRoot(), file))
 		if err != nil {
-			log.Fatal(err)
+			return "", err
 		}
 		modTime := fileInfo.ModTime().Year()
-
 		link := fmt.Sprintf("| %d | [%s][] |\n", modTime, strings.TrimSuffix(file, ".md"))
 		content.WriteString(link)
 	}
 
 	content.WriteString("\n")
 
-	// Append file links
 	for _, file := range files {
-		link := fmt.Sprintf("[%s]: %s\n", strings.TrimSuffix(file, ".md"), strings.TrimSuffix(file, ".md") + ".html")
+		link := fmt.Sprintf("[%s]: %s\n", strings.TrimSuffix(file, ".md"), strings.TrimSuffix(file, ".md")+".html")
 		content.WriteString(link)
 	}
 
-	return content.String()
+	return content.String(), nil
 }

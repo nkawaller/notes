@@ -9,6 +9,9 @@ module.exports = {
             a: {
               color: theme("colors.zinc.700"),
             },
+            pre: {
+              overflowX: "auto",
+            },
           },
         },
       }),

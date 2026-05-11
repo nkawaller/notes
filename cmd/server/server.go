@@ -45,9 +45,13 @@ func (s *Server) handleRequest(w http.ResponseWriter, r *http.Request) {
 		// TODO: render a 404 template
 		return
 	} else if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
 	}
 
 	html := utils.ConvertMarkdownToHTML(content)
-	utils.RenderPage(w, html, s.fileSystem, markdownFile)
+	if err := utils.RenderPage(w, html, s.fileSystem, markdownFile); err != nil {
+		log.Println(err)
+	}
 }

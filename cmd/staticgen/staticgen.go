@@ -33,12 +33,15 @@ func (s *StaticSiteGenerator) generateRootPage() {
 
 	var markdownFiles []string
 	for _, file := range files {
-		if strings.HasSuffix(file.Name(), ".md") && file.Name() != "rood.md" {
+		if strings.HasSuffix(file.Name(), ".md") && file.Name() != "root.md" {
 			markdownFiles = append(markdownFiles, file.Name())
 		}
 	}
 
-	markdownContent := utils.GenerateMarkdownContent(markdownFiles, s.fileSystem)
+	markdownContent, err := utils.GenerateMarkdownContent(markdownFiles, s.fileSystem)
+	if err != nil {
+		log.Fatal(err)
+	}
 	outputFile := filepath.Join(s.fileSystem.GetContentRoot(), "root.md")
 
 	err = s.fileSystem.WriteFile(outputFile, []byte(markdownContent), 0755)
