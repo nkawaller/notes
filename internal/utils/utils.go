@@ -29,7 +29,7 @@ func ConvertMarkdownToHTML(content []byte) []byte {
 		blackfriday.Strikethrough | blackfriday.SpaceHeadings | blackfriday.BackslashLineBreak |
 		blackfriday.DefinitionLists | blackfriday.Footnotes
 
-	return blackfriday.Run([]byte(content), blackfriday.WithRenderer(bfchroma.NewRenderer(bfchroma.Style("gruvbox"))),
+	return blackfriday.Run([]byte(content), blackfriday.WithRenderer(bfchroma.NewRenderer(bfchroma.Style("nord"))),
 		blackfriday.WithExtensions(exts),
 	)
 }
