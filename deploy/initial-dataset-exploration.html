@@ -33,7 +33,7 @@
     </div>
 
     
-    <article class="prose prose-zinc prose-base md:prose-lg prose-headings:font-semibold mx-auto mt-16 flex-1 min-w-0 w-full overflow-hidden p-4">
+    <article class="prose prose-zinc prose-base md:prose-lg prose-headings:font-semibold prose-pre:px-0 mx-auto mt-16 flex-1 min-w-0 w-full overflow-hidden p-4">
         
         <div>
             <aside class="mb-3.5">
@@ -51,130 +51,130 @@
 
 <p>Load only a portion of the dataset first, especially if it&rsquo;s large,
    to avoid overwhelming memory:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#fe8019">import</span> pandas <span style="color:#fe8019">as</span> pd
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#81a1c1;font-weight:bold">import</span> <span style="color:#8fbcbb">pandas</span> <span style="color:#81a1c1;font-weight:bold">as</span> <span style="color:#8fbcbb">pd</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Load a sample of 100 rows</span>
-</span></span><span style="display:flex;"><span>   df <span style="color:#fe8019">=</span> pd<span style="color:#fe8019">.</span>read_csv(<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">your_file.csv</span><span style="color:#b8bb26">&#39;</span>, nrows<span style="color:#fe8019">=</span><span style="color:#d3869b">100</span>)
+</span></span><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Load a sample of 100 rows</span>
+</span></span><span style="display:flex;"><span>   df <span style="color:#81a1c1">=</span> pd<span style="color:#81a1c1">.</span>read_csv<span style="color:#eceff4">(</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">your_file.csv</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">,</span> nrows<span style="color:#81a1c1">=</span><span style="color:#b48ead">100</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <p>You can also load in chunks if the file is very large:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   chunk_size <span style="color:#fe8019">=</span> <span style="color:#d3869b">10000</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#fe8019">for</span> chunk <span style="color:#fe8019">in</span> pd<span style="color:#fe8019">.</span>read_csv(<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">your_file.csv</span><span style="color:#b8bb26">&#39;</span>, chunksize<span style="color:#fe8019">=</span>chunk_size):
-</span></span><span style="display:flex;"><span>       <span style="color:#928374;font-style:italic"># Process each chunk here</span>
-</span></span><span style="display:flex;"><span>       <span style="color:#fe8019">pass</span>
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   chunk_size <span style="color:#81a1c1">=</span> <span style="color:#b48ead">10000</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#81a1c1;font-weight:bold">for</span> chunk <span style="color:#81a1c1;font-weight:bold">in</span> pd<span style="color:#81a1c1">.</span>read_csv<span style="color:#eceff4">(</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">your_file.csv</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">,</span> chunksize<span style="color:#81a1c1">=</span>chunk_size<span style="color:#eceff4">)</span><span style="color:#eceff4">:</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#616e87;font-style:italic"># Process each chunk here</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#81a1c1;font-weight:bold">pass</span>
 </span></span></code></pre>
 <h2>Get an Overview of the Data</h2>
 
 <p>Use methods to quickly assess the structure:</p>
 
 <p><strong>First few rows</strong>:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>head()  <span style="color:#928374;font-style:italic"># View first 5 rows</span>
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>tail()  <span style="color:#928374;font-style:italic"># View last 5 rows</span>
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>head<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>  <span style="color:#616e87;font-style:italic"># View first 5 rows</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>tail<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>  <span style="color:#616e87;font-style:italic"># View last 5 rows</span>
 </span></span></code></pre>
 <p><strong>Summary of data types and non-null counts</strong>:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>info()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>info<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <p><strong>Column names</strong>:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>columns
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>columns
 </span></span></code></pre>
 <p><strong>Number of rows and columns</strong>:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>shape
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>shape
 </span></span></code></pre>
 <h2>Check for Missing Data</h2>
 
 <p>Missing data can affect analysis and model performance:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Count missing values per column</span>
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>isnull()<span style="color:#fe8019">.</span>sum()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Count missing values per column</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>isnull<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">.</span>sum<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>   
-</span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Percentage of missing values per column</span>
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>isnull()<span style="color:#fe8019">.</span>mean()  
+</span></span><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Percentage of missing values per column</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>isnull<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">.</span>mean<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>  
 </span></span></code></pre>
 <p>Remove rows with null values:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Remove all rows where any columns contain null values</span>
-</span></span><span style="display:flex;"><span>   df <span style="color:#fe8019">=</span> df<span style="color:#fe8019">.</span>dropna()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Remove all rows where any columns contain null values</span>
+</span></span><span style="display:flex;"><span>   df <span style="color:#81a1c1">=</span> df<span style="color:#81a1c1">.</span>dropna<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Drop rows with null values in a specific column</span>
-</span></span><span style="display:flex;"><span>   df <span style="color:#fe8019">=</span> df<span style="color:#fe8019">.</span>dropna(subset<span style="color:#fe8019">=</span>[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>])
+</span></span><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Drop rows with null values in a specific column</span>
+</span></span><span style="display:flex;"><span>   df <span style="color:#81a1c1">=</span> df<span style="color:#81a1c1">.</span>dropna<span style="color:#eceff4">(</span>subset<span style="color:#81a1c1">=</span><span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <h2>Look at Descriptive Statistics</h2>
 
 <p>Get an overall sense of the data’s distribution:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Summary statistics for numeric columns</span>
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>describe()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Summary statistics for numeric columns</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>describe<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>   
-</span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Summary for all columns, including categorical</span>
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>describe(include<span style="color:#fe8019">=</span><span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">all</span><span style="color:#b8bb26">&#39;</span>)
+</span></span><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Summary for all columns, including categorical</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>describe<span style="color:#eceff4">(</span>include<span style="color:#81a1c1">=</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">all</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <h2>Examine Data Types</h2>
 
 <p>Ensure the data types (e.g., numeric, categorical) are correct:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>dtypes
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>dtypes
 </span></span></code></pre>
 <p>If you notice inconsistencies (e.g., a column with numbers stored as
    strings), you might want to convert them:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Convert to numeric, with errors set to NaN</span>
-</span></span><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">=</span> pd<span style="color:#fe8019">.</span>to_numeric(df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>], errors<span style="color:#fe8019">=</span><span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">coerce</span><span style="color:#b8bb26">&#39;</span>)
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Convert to numeric, with errors set to NaN</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span> <span style="color:#81a1c1">=</span> pd<span style="color:#81a1c1">.</span>to_numeric<span style="color:#eceff4">(</span>df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span><span style="color:#eceff4">,</span> errors<span style="color:#81a1c1">=</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">coerce</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <p>Convert the data type in one column to another type (a 64-bit integer
    in this case):</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">=</span> df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>astype(<span style="color:#fabd2f">int</span>)
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span> <span style="color:#81a1c1">=</span> df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span><span style="color:#81a1c1">.</span>astype<span style="color:#eceff4">(</span><span style="color:#81a1c1">int</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <h2>Handle Duplicates</h2>
 
 <p>Check for any duplicate rows that may need to be removed:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Number of duplicate rows</span>
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>duplicated()<span style="color:#fe8019">.</span>sum()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Number of duplicate rows</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>duplicated<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">.</span>sum<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>   
-</span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Remove duplicates</span>
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>drop_duplicates(inplace<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)
+</span></span><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Remove duplicates</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>drop_duplicates<span style="color:#eceff4">(</span>inplace<span style="color:#81a1c1">=</span><span style="color:#81a1c1;font-weight:bold">True</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <h2>Examine Unique Values in Categorical Columns</h2>
 
 <p>For categorical data, check the number of unique values and their
    distribution:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Distribution of values</span>
-</span></span><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>value_counts()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Distribution of values</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span><span style="color:#81a1c1">.</span>value_counts<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>   
-</span></span><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Number of unique values</span>
-</span></span><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>nunique()
+</span></span><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Number of unique values</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span><span style="color:#81a1c1">.</span>nunique<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <p>Count the number of occurrences of a certain value in a column:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   count <span style="color:#fe8019">=</span> (df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">==</span> <span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">value</span><span style="color:#b8bb26">&#39;</span>)<span style="color:#fe8019">.</span>sum()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   count <span style="color:#81a1c1">=</span> <span style="color:#eceff4">(</span>df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span> <span style="color:#81a1c1">==</span> <span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">value</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">.</span>sum<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <h2>Check for Outliers</h2>
 
 <p>Use basic visualizations to check for outliers in numeric columns:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#fe8019">import</span> matplotlib.pyplot <span style="color:#fe8019">as</span> plt
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>boxplot(column<span style="color:#fe8019">=</span><span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">numeric_column</span><span style="color:#b8bb26">&#39;</span>)
-</span></span><span style="display:flex;"><span>   plt<span style="color:#fe8019">.</span>show()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#81a1c1;font-weight:bold">import</span> <span style="color:#8fbcbb">matplotlib</span><span style="color:#8fbcbb">.</span><span style="color:#8fbcbb">pyplot</span> <span style="color:#81a1c1;font-weight:bold">as</span> <span style="color:#8fbcbb">plt</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>boxplot<span style="color:#eceff4">(</span>column<span style="color:#81a1c1">=</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">numeric_column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   plt<span style="color:#81a1c1">.</span>show<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <h2>Inspect Data Relationships</h2>
 
 <p>Check correlations between numerical columns to identify potential
    relationships:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>corr()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>corr<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <h2>Visualize the Data</h2>
 
 <p>Simple plots can give you insights into patterns:</p>
 
 <p><strong>Histograms for distributions</strong>:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">numeric_column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>hist()
-</span></span><span style="display:flex;"><span>   plt<span style="color:#fe8019">.</span>show()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">numeric_column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span><span style="color:#81a1c1">.</span>hist<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   plt<span style="color:#81a1c1">.</span>show<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <p><strong>Bar charts for categorical data</strong>:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">categorical_column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>value_counts()<span style="color:#fe8019">.</span>plot(kind<span style="color:#fe8019">=</span><span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">bar</span><span style="color:#b8bb26">&#39;</span>)
-</span></span><span style="display:flex;"><span>   plt<span style="color:#fe8019">.</span>show()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">categorical_column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span><span style="color:#81a1c1">.</span>value_counts<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">.</span>plot<span style="color:#eceff4">(</span>kind<span style="color:#81a1c1">=</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">bar</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   plt<span style="color:#81a1c1">.</span>show<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <h2>Memory Usage</h2>
 
 <p>For large datasets, monitor memory usage to avoid crashes:</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Total memory usage in bytes</span>
-</span></span><span style="display:flex;"><span>   df<span style="color:#fe8019">.</span>memory_usage(deep<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)<span style="color:#fe8019">.</span>sum()
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Total memory usage in bytes</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#81a1c1">.</span>memory_usage<span style="color:#eceff4">(</span>deep<span style="color:#81a1c1">=</span><span style="color:#81a1c1;font-weight:bold">True</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">.</span>sum<span style="color:#eceff4">(</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
 <p>Consider optimizing memory by converting data types (e.g., converting
    large integer columns to smaller types):</p>
-<pre tabindex="0" style="color:#ebdbb2;background-color:#282828;"><code><span style="display:flex;"><span>   <span style="color:#928374;font-style:italic"># Convert to a smaller int type</span>
-</span></span><span style="display:flex;"><span>   df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>] <span style="color:#fe8019">=</span> df[<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">column</span><span style="color:#b8bb26">&#39;</span>]<span style="color:#fe8019">.</span>astype(<span style="color:#b8bb26"></span><span style="color:#b8bb26">&#39;</span><span style="color:#b8bb26">int32</span><span style="color:#b8bb26">&#39;</span>)
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;"><code><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic"># Convert to a smaller int type</span>
+</span></span><span style="display:flex;"><span>   df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span> <span style="color:#81a1c1">=</span> df<span style="color:#eceff4">[</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">column</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">]</span><span style="color:#81a1c1">.</span>astype<span style="color:#eceff4">(</span><span style="color:#a3be8c"></span><span style="color:#a3be8c">&#39;</span><span style="color:#a3be8c">int32</span><span style="color:#a3be8c">&#39;</span><span style="color:#eceff4">)</span>
 </span></span></code></pre>
         </div>
     </article>
