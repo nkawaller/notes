@@ -11,6 +11,7 @@ module.exports = {
             },
             pre: {
               overflowX: "auto",
+              maxWidth: '100%',
             },
           },
         },
