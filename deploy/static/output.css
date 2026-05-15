@@ -1402,17 +1402,21 @@ video {
   --tw-prose-invert-td-borders: #3f3f46;
 }
 
+.prose a {
+  text-decoration-thickness: 2px;
+}
+
 .prose table a {
   text-decoration: none;
   background-image: linear-gradient(currentColor, currentColor);
   background-position: 0 100%;
   background-repeat: no-repeat;
-  background-size: 0% 1px;
+  background-size: 0% 2px;
   transition: background-size 200ms ease-out;
 }
 
 .prose table a:hover {
-  background-size: 100% 1px;
+  background-size: 100% 2px;
 }
 
 .float-right {
