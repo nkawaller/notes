@@ -82,8 +82,8 @@ func GenerateMarkdownContent(files []string, fs FileSystem) (string, error) {
 	var content strings.Builder
 
 	content.WriteString("# All notes\n\n")
-	content.WriteString("|      |                     |\n")
-	content.WriteString("|------|---------------------|\n")
+	content.WriteString("|                     |      |\n")
+	content.WriteString("|---------------------|-----:|\n")
 
 	for _, file := range files {
 		fileInfo, err := fs.Stat(filepath.Join(fs.GetContentRoot(), file))
@@ -91,7 +91,7 @@ func GenerateMarkdownContent(files []string, fs FileSystem) (string, error) {
 			return "", err
 		}
 		modTime := fileInfo.ModTime().Year()
-		link := fmt.Sprintf("| %d | [%s][] |\n", modTime, strings.TrimSuffix(file, ".md"))
+		link := fmt.Sprintf("| [%s][] | %d |\n", strings.TrimSuffix(file, ".md"), modTime)
 		content.WriteString(link)
 	}
 
