@@ -1,16 +1,24 @@
 package utils
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"html/template"
 	"net/http"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 
 	"github.com/Depado/bfchroma/v2"
 	"github.com/nkawaller/notes/internal/page"
 	"github.com/russross/blackfriday/v2"
+)
+
+var (
+	referenceLinkRe = regexp.MustCompile(`(?m)^\[[^\]]+\]:\s*(?:\./)?([^\s#?]+)\.html\b`)
+	titleRe         = regexp.MustCompile(`^#\s+(.+?)\s*$`)
 )
 
 func GetMarkdownFilePath(fs FileSystem, endpoint string) string {
@@ -95,4 +103,27 @@ func GenerateMarkdownContent(files []string, fs FileSystem) (string, error) {
 	}
 
 	return content.String(), nil
+}
+
+func ExtractReferenceLinks(content []byte) []string {
+	matches := referenceLinkRe.FindAllSubmatch(content, -1)
+	slugs := make([]string, 0, len(matches))
+	for _, m := range matches {
+		slug := string(m[1])
+		if strings.ContainsAny(slug, "/:") {
+			continue
+		}
+		slugs = append(slugs, slug)
+	}
+	return slugs
+}
+
+func ExtractTitle(content []byte) string {
+	scanner := bufio.NewScanner(bytes.NewReader(content))
+	for scanner.Scan() {
+		if m := titleRe.FindStringSubmatch(scanner.Text()); m != nil {
+			return strings.TrimSpace(m[1])
+		}
+	}
+	return ""
 }

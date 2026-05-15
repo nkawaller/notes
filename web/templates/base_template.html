@@ -42,6 +42,17 @@
                 </span>
             </aside>
             {{.HTML}}
+            {{ if .Backlinks }}
+            <hr />
+            <section class="not-prose mt-8">
+                <h2 class="text-lg font-semibold mb-2">Linked from</h2>
+                <ul class="list-disc pl-6">
+                {{ range .Backlinks }}
+                    <li><a href="./{{ .Slug }}.html">{{ .Title }}</a></li>
+                {{ end }}
+                </ul>
+            </section>
+            {{ end }}
         </div>
     </article>
 

@@ -7,6 +7,7 @@ import (
 	"io/fs"
 	"log"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"github.com/nkawaller/notes/internal/page"
@@ -74,13 +75,69 @@ func (s *StaticSiteGenerator) generateStaticSite() error {
 		log.Fatal(err)
 	}
 
+	backlinks, err := s.buildBacklinkIndex(files)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	for _, file := range files {
-		err := s.processMarkdownFile(file, tmpl)
+		err := s.processMarkdownFile(file, tmpl, backlinks)
 		if err != nil {
 			log.Fatal(err)
 		}
 	}
 	return nil
+}
+
+var excludedSources = map[string]bool{
+	"root.md":        true,
+	"korean-root.md": true,
+}
+
+func (s *StaticSiteGenerator) buildBacklinkIndex(files []fs.DirEntry) (map[string][]page.Backlink, error) {
+	noteSet := make(map[string]bool)
+	for _, f := range files {
+		if !f.IsDir() && filepath.Ext(f.Name()) == ".md" {
+			noteSet[strings.TrimSuffix(f.Name(), ".md")] = true
+		}
+	}
+
+	index := make(map[string][]page.Backlink)
+	for _, f := range files {
+		if f.IsDir() || filepath.Ext(f.Name()) != ".md" {
+			continue
+		}
+		if excludedSources[f.Name()] {
+			continue
+		}
+
+		sourceSlug := strings.TrimSuffix(f.Name(), ".md")
+		content, err := s.fileSystem.ReadFile(filepath.Join(s.fileSystem.GetContentRoot(), f.Name()))
+		if err != nil {
+			return nil, err
+		}
+
+		title := utils.ExtractTitle(content)
+		if title == "" {
+			title = sourceSlug
+		}
+
+		seen := make(map[string]bool)
+		for _, target := range utils.ExtractReferenceLinks(content) {
+			if target == sourceSlug || !noteSet[target] || seen[target] {
+				continue
+			}
+			seen[target] = true
+			index[target] = append(index[target], page.Backlink{Slug: sourceSlug, Title: title})
+		}
+	}
+
+	for target := range index {
+		sort.Slice(index[target], func(i, j int) bool {
+			return index[target][i].Title < index[target][j].Title
+		})
+	}
+	return index, nil
 }
 
 func (s *StaticSiteGenerator) createStaticDir() error {
@@ -91,7 +148,7 @@ func (s *StaticSiteGenerator) createStaticDir() error {
 	return nil
 }
 
-func (s *StaticSiteGenerator) processMarkdownFile(file fs.DirEntry, tmpl *template.Template) error {
+func (s *StaticSiteGenerator) processMarkdownFile(file fs.DirEntry, tmpl *template.Template, backlinks map[string][]page.Backlink) error {
 	if !file.IsDir() && filepath.Ext(file.Name()) == ".md" {
 		path := file.Name()
 		content, err := utils.ReadMarkdownFile(s.fileSystem, filepath.Join(s.fileSystem.GetContentRoot(), path))
@@ -107,12 +164,14 @@ func (s *StaticSiteGenerator) processMarkdownFile(file fs.DirEntry, tmpl *templa
 		}
 		lastModified := fileInfo.ModTime()
 
+		slug := strings.TrimSuffix(path, ".md")
 		page := page.Page{
 			Title:        "Nathan Kawaller",
 			HTML:         template.HTML(html),
 			LastModified: lastModified,
 			CSSPath:      "./static/output.css",
-			ICONPath:      "./static/N.jpg",
+			ICONPath:     "./static/N.jpg",
+			Backlinks:    backlinks[slug],
 		}
 
 		outputPath := filepath.Join("deploy", strings.TrimSuffix(path, ".md")+".html")
