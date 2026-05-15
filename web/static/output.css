@@ -1402,6 +1402,19 @@ video {
   --tw-prose-invert-td-borders: #3f3f46;
 }
 
+.prose table a {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 200ms ease-out;
+}
+
+.prose table a:hover {
+  background-size: 100% 1px;
+}
+
 .float-right {
   float: right;
 }
@@ -1413,6 +1426,10 @@ video {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-3 {
@@ -1429,6 +1446,10 @@ video {
 
 .mt-16 {
   margin-top: 4rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .flex {
@@ -1451,6 +1472,10 @@ video {
   flex: 1 1 0%;
 }
 
+.list-disc {
+  list-style-type: disc;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1471,6 +1496,10 @@ video {
   padding: 1rem;
 }
 
+.pl-6 {
+  padding-left: 1.5rem;
+}
+
 .text-8xl {
   font-size: 6rem;
   line-height: 1;
@@ -1481,6 +1510,11 @@ video {
   line-height: 1.5rem;
 }
 
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1488,6 +1522,10 @@ video {
 
 .font-medium {
   font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .text-zinc-500 {
@@ -1720,16 +1758,6 @@ video {
 
 .prose-headings\:font-semibold :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"] *))) {
   font-weight: 600;
-}
-
-.prose-pre\:px-2 :is(:where(pre):not(:where([class~="not-prose"] *))) {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.prose-pre\:px-1 :is(:where(pre):not(:where([class~="not-prose"] *))) {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }
 
 .prose-pre\:px-0 :is(:where(pre):not(:where([class~="not-prose"] *))) {

@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind typography;
+
+@layer components {
+    .prose table a {
+        text-decoration: none;
+        background-image: linear-gradient(currentColor, currentColor);
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 0% 1px;
+        transition: background-size 200ms ease-out;
+    }
+
+    .prose table a:hover {
+        background-size: 100% 1px;
+    }
+}
